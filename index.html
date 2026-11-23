@@ -96,6 +96,8 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 .q2{font-family:"Source Serif 4",Georgia,serif;font-size:2.1rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;color:var(--ink);margin:12px 0 0}
 .filters.estado{margin-bottom:10px}
 .chip.big{font-size:1.05rem;padding:12px 22px}
+.quienD summary{cursor:pointer;font-weight:700}
+.quienD .quien{text-align:left;margin-top:10px}
 .quien{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0}
 .quien .ava{flex:0 0 64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.3rem;background-size:cover;background-position:center}
 .quien span{color:var(--muted);font-size:.9rem}.quien p{margin:6px 0 0;font-size:.95rem}
@@ -132,12 +134,6 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
   <h1>Le queda grande su casa?</h1>
   <p class="q2">Nido vacío?</p>
   <p class="q2">Demasiado mantenimiento?</p>
-
-  <section class="quien" aria-label="Quién lo atiende">
-    <div class="ava" aria-hidden="true">MM</div>
-    <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
-    <p>Junto a mi equipo lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div>
-  </section>
 
   <section class="card" aria-label="Paso 1">
     <p class="step"><b>1</b> Qué le gustaría hacer con su casa?</p>
@@ -226,12 +222,11 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
     <p class="phone">O escríbanos / llámenos al <strong>0981 290 892</strong></p>
 
 
-    <details>
-      <summary>Cómo calculamos estos números?</summary>
-      <p id="supuestos"></p>
-    </details>
 
-    <div class="sig"><strong>Max Mendelzon</strong><br>C21 Wilson-Chihan</div>
+    <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
+      <div class="quien"><div class="ava" aria-hidden="true">MM</div>
+      <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
+      <p>Junto a mi equipo lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div></div></details></div>
   </div>
 
 </div>
@@ -467,7 +462,10 @@ function renderDetalle(d){
     <a class="cta alt" href="${wa(`Hola, qué tal? Vi el ${d.nombre} y me gustaría charlarlo por teléfono. Mi nombre es `)}">Prefiero que me llamen</a>
     <p class="phone">O escríbanos / llámenos al <strong>0981 290 892</strong></p>
     <p class="phone" style="font-size:.8rem">Precio y disponibilidad sujetos a confirmación.</p>
-    <div class="sig"><strong>Max Mendelzon</strong><br>C21 Wilson-Chihan</div>
+    <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
+      <div class="quien"><div class="ava" aria-hidden="true">MM</div>
+      <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
+      <p>Junto a mi equipo lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div></div></details></div>
   </div>`;
   $("volver").addEventListener("click", ()=>{ location.hash=""; });
 }
@@ -504,7 +502,7 @@ function calc(){
   $("dMud").textContent=menos(S.mudanza); $("dEsc").textContent=menos(v*S.escribaniaVenta); $("dNeto").textContent=usd(netoCasa());
   $("rAlq").textContent = usd(alqMes());
   $("netoVenta").hidden = st.casa==="alquilar"; $("netoAlq").hidden = st.casa!=="alquilar";
-  $("supuestos").textContent =
+  if ($("supuestos")) $("supuestos").textContent =
     `A la venta de la casa le restamos: 5,5% de comisión (5% más IVA), hasta 2,4% de impuesto a la renta por la venta (IRP), 1% de certificados y arreglos, 1,5% de escribanía y transferencia (la mitad que suele pagar el vendedor), y ${usd(S.mudanza)} de mudanza. `+
     `Al precio de cada departamento le sumamos 1,5% de escribanía y transferencia (la mitad que suele pagar el comprador). `+
     `El alquiler mensual es una estimación aproximada (0,4% del valor de la casa por mes). `+
