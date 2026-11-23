@@ -36,7 +36,7 @@ h3{font-size:1.25rem}
 .ph.photo{height:240px;padding:0;position:relative;display:block;background:#222}
 .strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;height:100%;scrollbar-width:none}
 .strip img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
-.ph.photo .tag{position:absolute;left:16px;bottom:14px;background:rgba(0,0,0,.55)}
+.ph.photo .tag{position:absolute;left:14px;top:14px;background:rgba(0,0,0,.55)}
 .ph.photo .count{position:absolute;right:14px;bottom:14px;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:4px 10px;font-size:.8rem;font-weight:700}
 .ph .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:700}
 .body{padding:18px 20px 20px}
@@ -96,6 +96,11 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 .q2{font-family:"Source Serif 4",Georgia,serif;font-size:2.1rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;color:var(--ink);margin:12px 0 0}
 .filters.estado{margin-bottom:10px}
 .chip.big{font-size:1.05rem;padding:12px 22px}
+.quien{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0}
+.quien .ava{flex:0 0 64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.3rem;background-size:cover;background-position:center}
+.quien span{color:var(--muted);font-size:.9rem}.quien p{margin:6px 0 0;font-size:.95rem}
+.pisoL{font-weight:600;color:var(--ink,#1d2b27);margin:-4px 0 10px;font-size:.98rem}
+.zsel{width:100%;font-size:1rem;padding:12px;border:2px solid var(--line);border-radius:12px;background:#fff;margin:4px 0 12px}
 .btn.det{background:var(--accent)}
 .back{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--accent);font-size:1.05rem;padding:10px 0}
 .dsec{margin-top:22px}
@@ -125,8 +130,14 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 <main class="wrap">
 <div id="vistaInicio">
   <h1>Le queda grande su casa?</h1>
-  <p class="q2">Nido Vacio?</p>
-  <p class="q2">Cansado del Mantenimiento?</p>
+  <p class="q2">Nido vacío?</p>
+  <p class="q2">Demasiado mantenimiento?</p>
+
+  <section class="quien" aria-label="Quién lo atiende">
+    <div class="ava" aria-hidden="true">MM</div>
+    <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
+    <p>Junto a mi equipo lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div>
+  </section>
 
   <section class="card" aria-label="Paso 1">
     <p class="step"><b>1</b> Qué le gustaría hacer con su casa?</p>
@@ -182,9 +193,16 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
     </div>
     <div class="filters" id="filters">
       <button class="chip" data-f="all" aria-pressed="true">Todos</button>
-      <button class="chip" data-f="lt500" aria-pressed="false">USD 250 a 500 mil</button>
+      <button class="chip" data-f="lt500" aria-pressed="false">Hasta USD 500 mil</button>
       <button class="chip" data-f="gt500" aria-pressed="false">Más de USD 500 mil</button>
     </div>
+    <div class="filters" id="fDorm">
+      <button class="chip" data-d="" aria-pressed="true">Todos los dormitorios</button>
+      <button class="chip" data-d="2" aria-pressed="false">2 dormitorios</button>
+      <button class="chip" data-d="3" aria-pressed="false">3 o más</button>
+    </div>
+    <label for="fZona" style="display:block;margin-top:10px;font-weight:700;color:var(--ink,#1d2b27)">Barrio</label>
+    <select id="fZona" class="zsel"><option value="">Todos los barrios</option></select>
     <div id="catalogo"></div>
   </div>
 
@@ -223,7 +241,7 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 <script>
 // ===== CATÁLOGO (avisos de colegas en grupos C21, oct–nov 2026; confirmar disponibilidad y precio) =====
 const DEPTOS = [
-  { expensas:"Gs. 5.800.000 (con fondo de reserva)", fotos:["fotos/calypso-1.jpg","fotos/calypso-2.jpg","fotos/calypso-3.jpg","fotos/calypso-4.jpg","fotos/calypso-5.jpg","fotos/calypso-6.jpg","fotos/calypso-7.jpg","fotos/calypso-8.jpg","fotos/calypso-9.jpg","fotos/calypso-10.jpg","fotos/calypso-11.jpg"], id:"calypso", estado:"terminado", nombre:"Edificio Calypso", barrio:"Av. Primer Presidente", precio:900000, m2:620, dorm:"2 suites", coch:2,
+  { expensas:"Gs. 5.800.000 (con fondo de reserva)", fotos:["fotos/calypso-1.jpg","fotos/calypso-2.jpg","fotos/calypso-3.jpg","fotos/calypso-4.jpg","fotos/calypso-5.jpg","fotos/calypso-6.jpg","fotos/calypso-7.jpg","fotos/calypso-8.jpg","fotos/calypso-9.jpg","fotos/calypso-10.jpg","fotos/calypso-11.jpg"], id:"calypso", estado:"terminado", nombre:"Edificio Calypso", barrio:"Trinidad · Av. Primer Presidente", precio:900000, m2:620, dorm:"2 suites", coch:2,
     tag:"Dos plantas · Sin muebles", lindo:["620 m², el más amplio del catálogo","Recepción 24 hs, piscina en el último piso, sauna","Habitación de servicio con baño"],
     detalle:["Departamento en 2 plantas, 620 m²","2 dormitorios en suite; el principal con walk-in closet","Un tercer dormitorio convertido en vestidor","Living y comedor social con parrilla dentro del departamento","Comedor privado y sala íntima","Baños con mármol","Cocina amplia con desayunador y vista al exterior","Lavadero amplio amoblado y habitación de servicio con baño","2 cocheras y bauleras"],
     amen:["Lobby con jardinería interior","Recepción 24 horas","Piscina en el último piso, sauna y gimnasio","Salón de eventos climatizado, techado y al aire libre","Parrilla al aire libre"],
@@ -255,7 +273,7 @@ const DEPTOS = [
     tag:"Piso 19 · Palier privado", lindo:["A pasos del Paseo La Galería","Generador para todo el edificio","Muebles empotrados Dell Anno incluidos"],
     detalle:["Piso 19, vista panorámica al frente y contrafrente","228 m² propios (327 m² totales)","4 dormitorios en suite","Gran sala con cocina integrada y balcón con parrilla","Palier privado y entrada de servicio independiente","Depósito propio de 15 m²","4 cocheras","Incluye muebles empotrados Dell Anno"],
     amen:["Piscina, jacuzzi y solárium en la azotea","Gimnasio y sauna","Salón de eventos y quincho","Coworking y salón de juegos","Generador para todo el edificio"] },
-  { fotos:["fotos/pueblo-1.jpg","fotos/pueblo-2.jpg","fotos/pueblo-3.jpg","fotos/pueblo-4.jpg","fotos/pueblo-5.jpg","fotos/pueblo-6.jpg","fotos/pueblo-7.jpg","fotos/pueblo-8.jpg","fotos/pueblo-9.jpg"], expensas:"Gs. 1.200.000", id:"pueblo-del-rio", estado:"terminado", nombre:"Pueblo del Río · Faro I", barrio:"Condominio náutico Pueblo del Río", precio:370000, m2:205, dorm:"3", coch:2,
+  { fotos:["fotos/pueblo-1.jpg","fotos/pueblo-2.jpg","fotos/pueblo-3.jpg","fotos/pueblo-4.jpg","fotos/pueblo-5.jpg","fotos/pueblo-6.jpg","fotos/pueblo-7.jpg","fotos/pueblo-8.jpg","fotos/pueblo-9.jpg"], expensas:"Gs. 1.200.000", id:"pueblo-del-rio", estado:"terminado", nombre:"Pueblo del Río · Faro I", barrio:"Nueva Asunción · Condominio náutico", precio:370000, m2:205, dorm:"3", coch:2,
     tag:"Vista al río · Amoblado", lindo:["Vista abierta al río y la naturaleza","Muelle privado y playa para residentes","Se vende amoblado y equipado"],
     detalle:["205 m² propios","Dormitorio principal en suite con vestidor","Dos dormitorios más y baño compartido","Living comedor amplio y luminoso","Balcón con parrilla","Cocina equipada y lavadero","Dormitorio de servicio con baño","2 cocheras"],
     amen:["Club house con vista al río","Muelle privado y playa","Piscina y gimnasio","Canchas de pádel y fútbol"] },
@@ -290,7 +308,7 @@ const DEPTOS = [
     tag:"Edificio boutique · Listo", lindo:["204 m² en un edificio boutique de 6 pisos","Terraza con parrilla y vista abierta","A 450 m del Club Centenario"],
     detalle:["204 m² totales (168 m² refrigerados)","3 dormitorios; suite principal con vestidor","4 baños (incluye social y de servicio)","Living comedor amplio con salida a terraza","Terraza con parrilla propia","Cocina independiente con desayunador de granito","Área de servicio completa","2 cocheras y baulera"],
     amen:["Salón social para 50 personas","Estar con TV, ping-pong y pool","Parrillero techado al aire libre","Piscina con solárium y jardín"] },
-  { fotos:["fotos/patos-1.jpg","fotos/patos-2.jpg","fotos/patos-3.jpg","fotos/patos-4.jpg","fotos/patos-5.jpg","fotos/patos-6.jpg","fotos/patos-7.jpg","fotos/patos-8.jpg"], expensas:"Gs. 2.050.000 (con cochera)", id:"palacio-patos", estado:"terminado", nombre:"Palacio de los Patos · 2 suites", barrio:"Asunción", precio:340000, m2:168, dorm:"2 suites", coch:1,
+  { fotos:["fotos/patos-1.jpg","fotos/patos-2.jpg","fotos/patos-3.jpg","fotos/patos-4.jpg","fotos/patos-5.jpg","fotos/patos-6.jpg","fotos/patos-7.jpg","fotos/patos-8.jpg"], expensas:"Gs. 2.050.000 (con cochera)", id:"palacio-patos", estado:"terminado", nombre:"Palacio de los Patos · 2 suites", barrio:"Trinidad", precio:340000, m2:168, dorm:"2 suites", coch:1,
     tag:"Piso alto · Balcón con vista", lindo:["Balcón corrido con vista verde","Seguridad 24 h y conserjería","Spa, sauna, gimnasio y piscina semiolímpica"],
     detalle:["168 m² propios (224 m² totales)","Sala comedor amplia","Cocina equipada","Baño social","Balcón","2 dormitorios en suite, el principal con vestidor","Área de servicio con baño"],
     amen:["Seguridad 24 h y conserjería","Piscina semiolímpica y piscina para niños","Gimnasio","Spa, sauna, sala de masajes y peluquería","Salón de eventos para más de 100 personas","Estacionamiento de cortesía"] },
@@ -302,7 +320,7 @@ const DEPTOS = [
     tag:"Piso 12 · Vista a la Costanera", lindo:["Vista a la Costanera desde el piso 12","208 m² propios, ambientes amplios","Piscina, sauna y quincho climatizado"],
     detalle:["208 m² propios (253 m² totales), piso 12","3 dormitorios (1 en suite)","Sala comedor","Cocina amoblada","Lavadero independiente","Área de servicio","1 cochera y 1 baulera"],
     amen:["Piscina","Sauna","Quincho climatizado","Parque infantil"] },
-  { fotos:["fotos/forest-1.jpg","fotos/forest-2.jpg","fotos/forest-3.jpg","fotos/forest-4.jpg","fotos/forest-5.jpg","fotos/forest-6.jpg","fotos/forest-7.jpg","fotos/forest-8.jpg","fotos/forest-9.jpg"], expensas:"Gs. 1.250.000", id:"the-forest", estado:"terminado", nombre:"The Forest · Piso 11", barrio:"Itapúa y Primer Presidente", precio:264000, m2:null, dorm:"3 (1 en suite)", coch:1,
+  { fotos:["fotos/forest-1.jpg","fotos/forest-2.jpg","fotos/forest-3.jpg","fotos/forest-4.jpg","fotos/forest-5.jpg","fotos/forest-6.jpg","fotos/forest-7.jpg","fotos/forest-8.jpg","fotos/forest-9.jpg"], expensas:"Gs. 1.250.000", id:"the-forest", estado:"terminado", nombre:"The Forest · Piso 11", barrio:"Trinidad · Itapúa y Primer Presidente", precio:264000, m2:null, dorm:"3 (1 en suite)", coch:1,
     tag:"Amoblado · Listo para mudarse", lindo:["Totalmente amoblado y equipado","Piscina exterior y piscina cubierta climatizada","Sendero para caminatas entre el verde"],
     detalle:["Piso 11, Torre 1","Amplio living comedor","Cocina integrada totalmente equipada (anafe, campana y horno)","Amplio balcón","3 dormitorios, el principal en suite","Baño familiar","Aire acondicionado en todos los ambientes y placares","1 cochera"],
     amen:["Piscina exterior","Piscina cubierta climatizada","Gimnasio","Sendero para caminatas","Quinchos con parrilla","SUM y sala de reuniones","Sala de juegos y espacio para niños","Laundry"] },
@@ -319,7 +337,7 @@ const DEPTOS = [
     tag:"Piso alto · Vista abierta", lindo:["Vista abierta hacia la bahía","Ambientes amplios y construcción sólida","Cerca del Colegio San José y Las Teresas"],
     detalle:["150 m² propios","3 dormitorios (1 en suite)","Living y comedor integrados, amplios","Cocina independiente y lavadero","Habitación de servicio con baño","Balcón","Cochera techada y baulera"],
     amen:["Piscina","Sauna","Salón climatizado con quincho y parrilla","Área de juegos para niños"] },
-  { fotos:["fotos/gchelsea-1.jpg","fotos/gchelsea-2.jpg","fotos/gchelsea-3.jpg","fotos/gchelsea-4.jpg","fotos/gchelsea-5.jpg","fotos/gchelsea-6.jpg","fotos/gchelsea-7.jpg","fotos/gchelsea-8.jpg","fotos/gchelsea-9.jpg"], expensas:"≈ Gs. 1.100.000", id:"grand-chelsea", estado:"terminado", nombre:"Grand Chelsea · Dúplex", barrio:"Asunción", precio:250000, m2:113, dorm:"2 suites", coch:1,
+  { fotos:["fotos/gchelsea-1.jpg","fotos/gchelsea-2.jpg","fotos/gchelsea-3.jpg","fotos/gchelsea-4.jpg","fotos/gchelsea-5.jpg","fotos/gchelsea-6.jpg","fotos/gchelsea-7.jpg","fotos/gchelsea-8.jpg","fotos/gchelsea-9.jpg"], expensas:"≈ Gs. 1.100.000", id:"grand-chelsea", estado:"terminado", nombre:"Grand Chelsea · Dúplex", barrio:"Trinidad", precio:250000, m2:113, dorm:"2 suites", coch:1,
     tag:"A estrenar · Pisos 10 y 11", lindo:["Doble altura con ventanales y vista abierta","Estilo industrial, a estrenar","Piscina en la terraza del edificio"],
     detalle:["113 m², dúplex en pisos 10 y 11","Planta baja: living comedor, balcón y cocina integrada","Planta alta: estar íntimo y 2 dormitorios en suite","Baño familiar","Vestidor amplio","1 cochera","Tiene escalera interna entre los dos pisos"],
     amen:["Piscina en la terraza con vista","Solárium"] },
@@ -356,7 +374,12 @@ const S = {
   mesDeptoPorM2: 16000   // Gs/m² por mes: expensas + luz + agua (supuesto)
 };
 const WA = "595981290892";
-const st = { filtro:"all", estado:"terminado", casa:null, alq:null, scrollY:0 };
+const PISO = {"magnificat":"Piso 12","sky-garden":"Piso 8","miranda":"Piso 19","address-9":"Piso 9","mburucuya":"Piso 2","the-tower":"Piso 15","espana-las-mercedes":"Piso 8","tierra-alta-maestro":"Piso 5","habitalis-jardin":"Piso 6","the-forest":"Piso 11","grand-chelsea":"Pisos 10 y 11","montserrat-208":"Piso 12","tribeca":"Penthouse"};
+const ZONA = {"calypso":"Trinidad","the-forest":"Trinidad","palacio-patos":"Trinidad","grand-chelsea":"Trinidad","pueblo-del-rio":"Nueva Asunción","magnificat":"Santa Teresa","tribeca":"Santa Teresa","miranda":"Santa Teresa","the-tower":"Santa Teresa","mburucuya-361":"Mburucuyá","address-3h":"Mburucuyá","address-9":"Mburucuyá","mburucuya":"Mburucuyá","tierra-alta-maestro":"Villa Morra y Recoleta","habitalis-jardin":"Villa Morra y Recoleta","velvet-mariscal":"Villa Morra y Recoleta","espana-las-mercedes":"Las Mercedes y San Roque","montserrat":"Las Mercedes y San Roque","montserrat-208":"Las Mercedes y San Roque","sky-garden":"Carmelitas y Perseverancia","victoria-regia":"Carmelitas y Perseverancia","torre-centenario":"Bella Vista","barrio-jara":"Barrio Jara"};
+const zonaDe = d => ZONA[d.id] || "Otras zonas";
+const dormN = d => parseInt(d.dorm) || 0;
+const pisoHtml = d => PISO[d.id] ? `<p class="pisoL">${PISO[d.id]}</p>` : "";
+const st = { zona:"", dorm:"", filtro:"all", estado:"terminado", casa:null, alq:null, scrollY:0 };
 const $ = id => document.getElementById(id);
 const usd = n => "USD " + Math.round(n).toLocaleString("es-PY");
 const wa  = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
@@ -408,19 +431,21 @@ function msgTasa(d){
 }
 
 function render(){
-  const list = DEPTOS.filter(d => publicable(d) && d.estado===st.estado && (st.filtro==="all" || (st.filtro==="lt500" ? d.precio<=500000 : d.precio>500000)));
+  const list = DEPTOS.filter(d => publicable(d) && d.estado===st.estado && (st.filtro==="all" || (st.filtro==="lt500" ? d.precio<=500000 : d.precio>500000))
+    && (!st.zona || zonaDe(d)===st.zona) && (!st.dorm || (st.dorm==="2" ? dormN(d)===2 : dormN(d)>=3)));
   $("catalogo").innerHTML = list.length ? list.map(d=>`<article class="card prop">
       ${fotoHtml(d)}
       <div class="body">
         <div class="barrio">${d.barrio}</div>
         <h3>${d.nombre}</h3>
         <div class="price">${d.precioTxt||((d.estado==="pozo"?"Desde ":"")+usd(d.precio))}</div>
+        ${pisoHtml(d)}
         ${factsHtml(d)}
         <ul class="goods">${d.lindo.map(x=>`<li>${x}</li>`).join("")}</ul>
         ${libreHtml(d)}
         <a class="btn det" href="#depto-${d.id}">Ver todo el departamento</a>
       </div></article>`).join("")
-    : `<p class="empty">No hay departamentos en este rango. Escríbanos y le buscamos uno.</p>`;
+    : `<p class="empty">No hay departamentos con esa búsqueda. Escríbanos y le buscamos uno.</p>`;
 }
 
 function renderDetalle(d){
@@ -430,6 +455,7 @@ function renderDetalle(d){
     <div class="barrio" style="margin-top:16px">${d.barrio}${d.estado==="pozo"?'<span class="estado-pill">En pozo</span>':""}</div>
     <h1 style="font-size:1.8rem;margin-top:4px">${d.nombre}</h1>
     <div class="price">${d.precioTxt||((d.estado==="pozo"?"Desde ":"")+usd(d.precio))}</div>
+    ${pisoHtml(d)}
     ${factsHtml(d)}
     ${libreHtml(d)}
     <a class="cta" href="${wa(msgVisita(d))}">Quiero visitarlo</a>
@@ -517,6 +543,14 @@ $("estados").addEventListener("click", e=>{
   const b=e.target.closest(".chip"); if(!b) return;
   $("estados").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", x===b));
   st.estado=b.dataset.e; render();
+});
+(function(){ const zs=[...new Set(DEPTOS.filter(publicable).map(zonaDe))].sort((a,b)=>(a==="Otras zonas")-(b==="Otras zonas")||a.localeCompare(b,"es"));
+  $("fZona").innerHTML += zs.map(z=>`<option>${z}</option>`).join(""); })();
+$("fZona").addEventListener("change", e=>{ st.zona=e.target.value; render(); });
+$("fDorm").addEventListener("click", e=>{
+  const b=e.target.closest(".chip"); if(!b) return;
+  $("fDorm").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  st.dorm=b.dataset.d; render();
 });
 window.addEventListener("hashchange", route);
 calc(); route();
