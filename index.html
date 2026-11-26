@@ -485,7 +485,6 @@ function renderDetalle(d){
     ${factsHtml(d)}
     ${libreHtml(d)}
     <a class="cta" href="${wa(msgVisita(d))}">Quiero visitarlo</a>
-    ${d.fotos&&d.fotos.length>1?`<section class="card dsec"><h3>Todas las fotos (${d.fotos.length})</h3><p class="phone" style="margin-top:0">Tocá una foto para verla en grande.</p><div class="gal">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" loading="lazy" data-lb="${d.id}" data-k="${k}">`).join("")}</div></section>`:""}
     <section class="card dsec"><h3>El departamento</h3><ul class="plain">${d.detalle.map(x=>`<li>${x}</li>`).join("")}</ul></section>
     <section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>
     ${d.nota?`<p class="dnote">${d.nota}</p>`:""}
