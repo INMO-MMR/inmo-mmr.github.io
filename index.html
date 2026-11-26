@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Departamentos amplios en Asunción para una nueva etapa. Tasamos su casa y lo acompañamos en todo.">
-<meta property="og:title" content="Le queda grande su casa?">
-<meta property="og:description" content="Departamentos amplios en Asunción para una nueva etapa. Tasamos su casa y lo acompañamos en todo.">
+<meta name="description" content="Conocé departamentos amplios en Asunción, con seguridad y menos mantenimiento.">
+<meta property="og:title" content="¿Estás pensando en pasar de una casa a un departamento?">
+<meta property="og:description" content="Conocé opciones amplias, con seguridad y menos mantenimiento.">
 <meta property="og:image" content="https://inmo-mmr.github.io/fotos/mburucuya-361-1.jpg">
 <meta property="og:url" content="https://inmo-mmr.github.io/">
 <meta property="og:type" content="website">
-<title>Le queda grande su casa? — Departamentos en Asunción</title>
+<title>¿Estás pensando en pasar de una casa a un departamento? — Departamentos en Asunción</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -132,29 +132,35 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 #lb img{max-width:100%;max-height:100%;object-fit:contain}
 #lb .bot{display:flex;gap:12px;padding:14px 16px 22px}
 #lb .bot button{flex:1;background:#fff;color:#000;border:0;border-radius:14px;padding:18px;font-size:1.2rem;font-weight:700}
-#vistaInicio > h1, #vistaInicio > .q2{text-align:center}
+.hero{text-align:center;padding-top:4px}.heroimg{display:block;width:100%;height:230px;object-fit:cover;border-radius:16px;margin:0 0 18px}.hero h1{font-size:2rem}.hero .lead{margin-top:12px}.hero .cta{margin-top:18px}
+.hero .cta.sec{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;cursor:pointer;background:#fff;color:var(--accent);border:2px solid var(--accent);font-weight:700;font-size:1.1rem;padding:16px;border-radius:14px;margin-top:10px}
+.opcional{color:var(--muted);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:0 0 4px}
+.est{margin:8px 0 0;font-size:.88rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <main class="wrap">
 <div id="vistaInicio">
-  <h1 id="hTit">Le queda grande su casa?</h1>
-  <p class="q2" id="hQ1">Nido vacío?</p>
-  <p class="q2" id="hQ2">Demasiado mantenimiento?</p>
+  <header class="hero">
+    <img class="heroimg" src="fotos/pueblo-1.jpg" alt="Living de un departamento con ventanales y vista al río">
+    <h1 id="hTit">¿Estás pensando en pasar de una casa a un departamento?</h1>
+    <button class="cta asbtn" id="verDeptosTop" type="button">Ver departamentos</button>
+  </header>
 
-  <section class="card" aria-label="Paso 1">
-    <p class="step"><b>1</b> <span id="s1t">Qué le gustaría hacer con su casa?</span></p>
+  <section class="card" aria-label="Tu casa">
+    <p class="opcional">Opcional</p>
+    <p class="step"><span id="s1t">¿Ya pensaste qué hacer con tu casa?</span></p>
     <div class="opts" data-group="casa">
-      <button class="opt" data-v="vender" aria-pressed="false">Venderla</button>
-      <button class="opt" data-v="alquilar" aria-pressed="false">Alquilarla</button>
-      <button class="opt wide" data-v="tasar" aria-pressed="false">No sé todavía, me gustaría tasarla</button>
-      <button class="opt wide" data-v="no" aria-pressed="false">Nada, solo quiero ver departamentos</button>
+      <button class="opt wide" data-v="vender" aria-pressed="false">Quiero venderla.</button>
+      <button class="opt wide" data-v="alquilar" aria-pressed="false">Quiero alquilarla.</button>
+      <button class="opt wide" data-v="tasar" aria-pressed="false">Me gustaría saber cuánto vale.</button>
+      <button class="opt wide" data-v="no" aria-pressed="false">Por ahora solo quiero ver departamentos.</button>
     </div>
-    <div id="subTasa" hidden><p class="label">Qué tipo de tasación le gustaría?</p><div class="opts">
+    <div id="subTasa" hidden><p class="label">¿Qué tipo de tasación te gustaría?</p><div class="opts">
          <a class="opt wide" id="waTasaPro" target="_blank" rel="noopener">Tasación profesional<br><span style="font-weight:400;font-size:.85em">hecha por un tasador certificado, con costo</span></a>
-         <a class="opt wide" id="waTasaAmc" target="_blank" rel="noopener">Cuánto podría venderla<br><span style="font-weight:400;font-size:.85em">comparando con ventas de su zona, sin costo</span></a></div></div>
+         <a class="opt wide" id="waTasaAmc" target="_blank" rel="noopener">Cuánto podría venderla<br><span style="font-weight:400;font-size:.85em">comparando con ventas de tu zona, sin costo</span></a></div></div>
        <div id="subAlq" hidden>
-      <p class="label" style="margin-top:14px">Cómo le gustaría alquilarla?</p>
+      <p class="label" style="margin-top:14px">¿Cómo te gustaría alquilarla?</p>
       <div class="opts" data-group="alq">
         <button class="opt" data-v="solo" aria-pressed="false">Solo alquilar</button>
         <button class="opt" data-v="opcion" aria-pressed="false">Con opción a compra</button>
@@ -163,27 +169,28 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
     </div>
   </section>
 
-  <section class="card" id="paso2" hidden aria-label="Paso 2">
-    <p class="step"><b>2</b> <span id="s2t">Cuánto cree que vale su casa?</span></p>
+  <section class="card" id="paso2" hidden aria-label="Valor de tu casa">
+    <p class="step"><span id="s2t">¿Cuánto pensás que vale tu casa?</span></p>
     <div class="big" id="vCasaTxt">USD 600.000</div>
     <input type="range" id="vCasa" min="200000" max="2000000" step="10000" value="600000" aria-label="Valor estimado de la casa en dólares">
     <div class="scale"><span>200 mil</span><span>2 millones</span></div>
     <div id="netoVenta">
-    <p class="neto">Después de comisión, impuestos y gastos, le quedarían cerca de <b id="rNeto">—</b></p>
+    <p class="neto">Después de comisión, impuestos y gastos, te quedarían cerca de <b id="rNeto">—</b></p>
+    <p class="est">Es una estimación, no una tasación: el número real sale de ver la casa.</p>
     <details class="desg"><summary>Ver qué se descuenta</summary>
     <table class="desglose" aria-label="Qué se descuenta del precio de venta">
-      <tr><td>Precio de venta de su casa</td><td id="dPrecio">—</td></tr>
+      <tr><td>Precio de venta de tu casa</td><td id="dPrecio">—</td></tr>
       <tr><td>Comisión inmobiliaria 5,5%<small>5% más IVA</small></td><td id="dCom">—</td></tr>
       <tr><td>Impuesto a la renta por la venta (IRP)<small>hasta 2,4% del precio</small></td><td id="dIrp">—</td></tr>
       <tr><td>Certificados y arreglos<small>certificado de dominio, impuesto inmobiliario y servicios al día, arreglos menores. Aproximado, 1%</small></td><td id="dGas">—</td></tr>
       <tr><td>Escribanía y transferencia<small>la mitad, la otra mitad paga el comprador. Aproximado, 1,5%</small></td><td id="dEsc">—</td></tr>
       <tr><td>Mudanza<small>aproximado</small></td><td id="dMud">—</td></tr>
-      <tr class="tot"><td>Le quedaría limpio, cerca de</td><td id="dNeto">—</td></tr>
+      <tr class="tot"><td>Te quedaría limpio, cerca de</td><td id="dNeto">—</td></tr>
     </table>
-    <p class="neto" style="font-size:.85em;opacity:.8;margin-top:8px">Son montos aproximados: los números reales dependen de su casa y de sus papeles.</p>
+    <p class="neto" style="font-size:.85em;opacity:.8;margin-top:8px">Son montos aproximados: los números reales dependen de tu casa y de tus papeles.</p>
     </details>
     </div>
-    <p class="neto" id="netoAlq" hidden>Alquilándola, podría recibir cerca de <b id="rAlq">—</b> por mes<br><span style="font-size:.85em;opacity:.8">Es una estimación: el alquiler real depende de las características de su casa.</span></p>
+    <p class="neto" id="netoAlq" hidden>Alquilándola, podrías recibir cerca de <b id="rAlq">—</b> por mes<br><span style="font-size:.85em;opacity:.8">Es una estimación: el alquiler real depende de las características de tu casa.</span></p>
     <button class="cta asbtn" id="verDeptos">Ver departamentos</button>
   </section>
 
@@ -212,14 +219,14 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
   </div>
 
   <section class="card result" id="paso4" hidden aria-label="Tasación gratis">
-    <p class="step light"><b>4</b> Tasación gratis de su casa</p>
-    <p class="label">Vamos a su casa sin costo y sin compromiso.</p>
-    <label class="flabel" for="fNombre">Su nombre</label>
+    <p class="step light">Tasación gratis de tu casa</p>
+    <p class="label">Vamos a tu casa sin costo y sin compromiso.</p>
+    <label class="flabel" for="fNombre">Tu nombre</label>
     <input class="inp" id="fNombre" autocomplete="name" placeholder="Ej.: María González">
-    <label class="flabel" for="fBarrio">En qué barrio está su casa?</label>
+    <label class="flabel" for="fBarrio">¿En qué barrio está tu casa?</label>
     <input class="inp" id="fBarrio" placeholder="Ej.: Villa Morra">
     <a class="cta light" id="waTasa" href="#">Quiero mi tasación gratis</a>
-    <p class="note">Le respondemos por WhatsApp para coordinar el día de la visita.</p>
+    <p class="note">Te respondemos por WhatsApp para coordinar el día de la visita.</p>
   </section>
 
   <div id="cierre" hidden>
@@ -228,14 +235,14 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 
   <div id="contacto" hidden>
     <a class="cta alt" id="waVisita" href="#">Prefiero que me llamen</a>
-    <p class="phone">O escríbanos / llámenos al <strong>0981 290 892</strong></p>
+    <p class="phone">O escribinos o llamanos al <strong>0981 290 892</strong></p>
 
 
 
     <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
       <div class="quien"><div class="ava" aria-hidden="true">MM</div>
       <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
-      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div></div></details></div>
+      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos te acompañamos en todo: la tasación y venta de tu casa, y la elección de tu nuevo departamento.</p></div></div></details></div>
   </div>
 
 </div>
@@ -398,7 +405,7 @@ const usd = n => "USD " + Math.round(n).toLocaleString("es-PY");
 const QS = new URLSearchParams(location.search);
 const HIJOS = QS.get("p")==="hijos";
 const REF = (QS.get("r")||(HIJOS?"H":"")).replace(/[^\w-]/g,"").slice(0,12);
-const HIJ = [["Estoy pensando poner mi casa","Mis papás están pensando poner su casa"],["Estoy pensando en vender mi casa","Mis papás están pensando en vender su casa"],["tengo una casa que estoy pensando","mis papás tienen una casa que están pensando"],["tengo una casa y me gustaría","mis papás tienen una casa y nos gustaría"],["Tengo una casa y me gustaría","Mis papás tienen una casa y nos gustaría"],["Tengo una casa","Mis papás tienen una casa"],["en cuánto podría venderla","en cuánto se podría vender"],["en mi zona","en su zona"],["Vi lo de la casa grande","Vi lo de la casa grande para mis papás"]];
+const HIJ = [["Estoy pensando poner mi casa","Mis papás están pensando poner su casa"],["Estoy pensando en vender mi casa","Mis papás están pensando en vender su casa"],["tengo una casa que estoy pensando","mis papás tienen una casa que están pensando"],["tengo una casa y me gustaría","mis papás tienen una casa y nos gustaría"],["Tengo una casa y me gustaría","Mis papás tienen una casa y nos gustaría"],["Tengo una casa","Mis papás tienen una casa"],["en cuánto podría venderla","en cuánto se podría vender"],["en mi zona","en su zona"],["Vi los departamentos","Vi los departamentos para mis papás"]];
 const voz = t => HIJOS ? HIJ.reduce((x,[a,b])=>x.split(a).join(b), t) : t;
 const conRef = t => !REF ? t : (/Mi nombre es $/.test(t) ? t.replace(/Mi nombre es $/, `(ref ${REF}) Mi nombre es `) : `${t} (ref ${REF})`);
 const wa  = t => `https://wa.me/${WA}?text=${encodeURIComponent(conRef(voz(t)))}`;
@@ -437,7 +444,7 @@ function libreHtml(d){
   if (st.casa!=="vender" && st.casa!=="tasar") return "";
   const libre = netoCasa() - d.precio*(1+S.gastosCompra);
   if (libre < 0) return "";
-  return `<div class="libre">Con su casa de ${usd(valorCasa())}, le sobrarían cerca de <b>${usd(libre)}</b></div>`;
+  return `<div class="libre">Con tu casa de ${usd(valorCasa())}, te sobrarían cerca de <b>${usd(libre)}</b></div>`;
 }
 function msgVisita(d){
   return `Hola, qué tal? Estuve viendo el ${d.nombre} y me gustó bastante. Si se puede, me encantaría conocerlo.`+(tieneCasa()?` Les comento que ${fraseCasa()}, calculo que andará por los ${usd(valorCasa())}.`:"");
@@ -464,7 +471,7 @@ function render(){
         ${libreHtml(d)}
         <a class="btn det" href="#depto-${d.id}">Ver todo el departamento</a>
       </div></article>`).join("")
-    : `<p class="empty">No hay departamentos con esa búsqueda. Escríbanos y le buscamos uno.</p>`;
+    : `<p class="empty">No hay departamentos con esa búsqueda. Escribinos y te buscamos uno.</p>`;
 }
 
 function renderDetalle(d){
@@ -478,18 +485,18 @@ function renderDetalle(d){
     ${factsHtml(d)}
     ${libreHtml(d)}
     <a class="cta" href="${wa(msgVisita(d))}">Quiero visitarlo</a>
-    ${d.fotos&&d.fotos.length>1?`<section class="card dsec"><h3>Todas las fotos (${d.fotos.length})</h3><p class="phone" style="margin-top:0">Toque una foto para verla en grande.</p><div class="gal">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" loading="lazy" data-lb="${d.id}" data-k="${k}">`).join("")}</div></section>`:""}
+    ${d.fotos&&d.fotos.length>1?`<section class="card dsec"><h3>Todas las fotos (${d.fotos.length})</h3><p class="phone" style="margin-top:0">Tocá una foto para verla en grande.</p><div class="gal">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" loading="lazy" data-lb="${d.id}" data-k="${k}">`).join("")}</div></section>`:""}
     <section class="card dsec"><h3>El departamento</h3><ul class="plain">${d.detalle.map(x=>`<li>${x}</li>`).join("")}</ul></section>
     <section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>
     ${d.nota?`<p class="dnote">${d.nota}</p>`:""}
     ${tieneCasa()?`<a class="cta alt" href="${wa(msgTasa(d))}">Quiero la tasación gratis de mi casa</a>`:""}
     <a class="cta alt" href="${wa(`Hola, qué tal? Vi el ${d.nombre} y me gustaría charlarlo por teléfono. Mi nombre es `)}">Prefiero que me llamen</a>
-    <p class="phone">O escríbanos / llámenos al <strong>0981 290 892</strong></p>
+    <p class="phone">O escribinos o llamanos al <strong>0981 290 892</strong></p>
     <p class="phone" style="font-size:.9rem">Precio y disponibilidad sujetos a confirmación.</p>
     <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
       <div class="quien"><div class="ava" aria-hidden="true">MM</div>
       <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
-      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos lo acompañamos en todo: la tasación y venta de su casa, y la elección de su nuevo departamento.</p></div></div></details></div>
+      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos te acompañamos en todo: la tasación y venta de tu casa, y la elección de tu nuevo departamento.</p></div></div></details></div>
   </div>`;
   $("volver").addEventListener("click", ()=>{ location.hash=""; });
 }
@@ -513,7 +520,7 @@ function links(){
   $("waTasaAmc").href = wa("Hola, qué tal? Tengo una casa y me gustaría saber en cuánto podría venderla, comparando con lo que se vende en mi zona. Cuándo podrían venir a verla?");
   const nombre=$("fNombre").value.trim(), barrio=$("fBarrio").value.trim();
   $("waTasa").href = wa(msgTasa(null)+(nombre?` Mi nombre es ${nombre}.`:""));
-  $("waVisita").href = wa(`Hola, qué tal? Vi lo de la casa grande y me gustaría charlarlo por teléfono.`+(nombre?` Mi nombre es ${nombre}.`:" Mi nombre es "));
+  $("waVisita").href = wa(`Hola, qué tal? Vi los departamentos y me gustaría charlarlo por teléfono.`+(nombre?` Mi nombre es ${nombre}.`:" Mi nombre es "));
   $("waDeptos").href = wa(`Hola, qué tal? Estuve viendo los departamentos y me gustaría que me ayuden a elegir.`);
 }
 
@@ -530,7 +537,7 @@ function calc(){
     `A la venta de la casa le restamos: 5,5% de comisión (5% más IVA), hasta 2,4% de impuesto a la renta por la venta (IRP), 1% de certificados y arreglos, 1,5% de escribanía y transferencia (la mitad que suele pagar el vendedor), y ${usd(S.mudanza)} de mudanza. `+
     `Al precio de cada departamento le sumamos 1,5% de escribanía y transferencia (la mitad que suele pagar el comprador). `+
     `El alquiler mensual es una estimación aproximada (0,4% del valor de la casa por mes). `+
-    `Precios y disponibilidad sujetos a confirmación. El número real de su casa sale de una visita.`;
+    `Precios y disponibilidad sujetos a confirmación. El número real de tu casa sale de una visita.`;
   links(); render();
 }
 
@@ -540,10 +547,10 @@ document.querySelector("[data-group=casa]").addEventListener("click", e=>{
   st.casa=b.dataset.v; $("subAlq").hidden = st.casa!=="alquilar"; calc();
   $("subTasa").hidden = st.casa!=="tasar";
   if (tieneCasa()){
-    $("cierre").hidden=true; $("tit3").textContent="3 · Departamentos para usted";
+    $("cierre").hidden=true;
     show("paso2", true);
   } else {
-    ["paso2","paso4"].forEach(id=>$(id).hidden=true); $("tit3").textContent="Departamentos disponibles";
+    ["paso2","paso4"].forEach(id=>$(id).hidden=true);
     show("paso3", true); show("cierre"); show("contacto");
   }
 });
@@ -553,6 +560,7 @@ document.querySelector("[data-group=alq]").addEventListener("click", e=>{
   st.alq=b.dataset.v; calc();
 });
 $("verDeptos").addEventListener("click", ()=>{ show("paso3", true); show("paso4"); show("contacto"); });
+$("verDeptosTop").addEventListener("click", ()=>{ show("paso3", true); if (tieneCasa()) show("paso4"); else show("cierre"); show("contacto"); });
 $("vCasa").addEventListener("input", calc);
 ["fNombre","fBarrio"].forEach(id=>$(id).addEventListener("input", links));
 $("filters").addEventListener("click", e=>{
@@ -575,12 +583,10 @@ $("fDorm").addEventListener("click", e=>{
   st.dorm=b.dataset.d; render();
 });
 if (HIJOS){
-  $("hTit").textContent="Sus papás viven en una casa que ya les queda grande?";
-  $("hQ1").textContent="Le mostramos departamentos amplios, pensados para esta etapa."; $("hQ1").className="lead"; $("hQ1").style.textAlign="center";
-  $("hQ2").hidden=true;
-  $("s1t").textContent="Qué les gustaría hacer con la casa de sus papás?";
-  $("s2t").textContent="Cuánto cree que vale la casa?";
-  document.title="Sus papás viven en una casa que ya les queda grande?";
+  $("hTit").textContent="¿Tus papás están pensando en pasar de una casa a un departamento?";
+  $("s1t").textContent="¿Ya pensaron qué hacer con la casa?";
+  $("s2t").textContent="¿Cuánto pensás que vale la casa?";
+  document.title="¿Tus papás están pensando en pasar de una casa a un departamento?";
 }
 window.addEventListener("hashchange", route);
 calc(); route();
