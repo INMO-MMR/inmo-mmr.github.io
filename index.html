@@ -123,6 +123,7 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.95rem}
 .ph.photo .nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
 .ph.photo .nav.p{left:10px}.ph.photo .nav.n{right:10px}
 .gal{display:grid;gap:10px;margin-top:10px}
+article.prop[data-go]{cursor:pointer}
 .gal img{width:100%;border-radius:14px;display:block;cursor:zoom-in}
 #lb{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}
 #lb.on{display:flex}
@@ -459,7 +460,7 @@ function msgTasa(d){
 function render(){
   const list = DEPTOS.filter(d => publicable(d) && d.estado===st.estado && (st.filtro==="all" || (st.filtro==="lt500" ? d.precio<=500000 : d.precio>500000))
     && (!st.zona || zonaDe(d)===st.zona) && (!st.dorm || (st.dorm==="2" ? dormN(d)===2 : dormN(d)>=3)));
-  $("catalogo").innerHTML = list.length ? list.map(d=>`<article class="card prop">
+  $("catalogo").innerHTML = list.length ? list.map(d=>`<article class="card prop" data-go="${d.id}">
       ${fotoHtml(d)}
       <div class="body">
         <div class="barrio">${d.barrio}</div>
@@ -601,6 +602,10 @@ calc(); route();
   function close(){lb.classList.remove("on");document.body.style.overflow="";}
   function mv(n){k=(k+n+cur.fotos.length)%cur.fotos.length;show();}
   document.addEventListener("click",e=>{
+    if(!e.target.closest("[data-mv],.count,a,button,select,input,summary")){
+      const card=e.target.closest("article.prop[data-go]");
+      if(card){location.hash="depto-"+card.dataset.go;e.preventDefault();return;}
+    }
     const nav=e.target.closest("[data-mv]");
     if(nav){const st=nav.parentElement.querySelector(".strip");st.scrollBy({left:st.clientWidth*(+nav.dataset.mv),behavior:"smooth"});e.preventDefault();return;}
     const t=e.target.closest("[data-lb]");
