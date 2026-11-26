@@ -595,7 +595,9 @@ document.querySelector("[data-group=casa]").addEventListener("click", e=>{
   $("subTasa").hidden = st.casa!=="tasar";
   if (tieneCasa()){
     $("cierre").hidden=true;
-    show("paso2", true);
+    if (st.casa==="alquilar"){ show("paso2"); show("subAlq", true); }
+    else if (st.casa==="tasar"){ show("paso2"); show("subTasa", true); }
+    else show("paso2", true);
   } else {
     ["paso2","paso4"].forEach(id=>$(id).hidden=true);
     show("paso3", true); show("cierre"); show("contacto");
@@ -604,7 +606,7 @@ document.querySelector("[data-group=casa]").addEventListener("click", e=>{
 document.querySelector("[data-group=alq]").addEventListener("click", e=>{
   const b=e.target.closest(".opt"); if(!b) return;
   e.currentTarget.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b));
-  st.alq=b.dataset.v; calc();
+  st.alq=b.dataset.v; calc(); show("paso2", true);
 });
 $("verDeptos").addEventListener("click", ()=>{ show("paso3", true); show("paso4"); show("contacto"); });
 $("verDeptosTop").addEventListener("click", ()=>{ show("paso3", true); if (tieneCasa()) show("paso4"); else show("cierre"); show("contacto"); });
