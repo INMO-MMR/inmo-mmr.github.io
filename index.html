@@ -253,6 +253,10 @@ article.prop[data-go]{cursor:pointer}
 <script>
 // ===== CATÁLOGO (avisos de colegas en grupos C21, oct–nov 2026; confirmar disponibilidad y precio) =====
 const DEPTOS = [
+  { fotos:["fotos/garay530-1.jpg","fotos/garay530-2.jpg","fotos/garay530-3.jpg","fotos/garay530-4.jpg","fotos/garay530-5.jpg","fotos/garay530-6.jpg"], expensas:"Gs. 950.659 (con cochera)", id:"garay-530", estado:"terminado", nombre:"Edificio Garay 530 · 3 dormitorios", barrio:"Asunción", precio:222000, m2:"119", dorm:"3 (1 suite)", coch:1,
+    tag:"3 dormitorios · Balcón con parrilla", lindo:["Balcón con parrilla","Cocina independiente y lavadero","Piscina, gimnasio y quincho climatizado"],
+    detalle:["119 m²","3 dormitorios, 1 en suite con vestidor","Baño familiar y baño social","Amplio living comedor","Cocina independiente","Lavadero","Balcón con parrilla","1 cochera incluida"],
+    amen:["Piscina","Gimnasio","Quincho climatizado"] },
   { fotos:["fotos/karimi246-1.jpg","fotos/karimi246-2.jpg","fotos/karimi246-3.jpg","fotos/karimi246-4.jpg","fotos/karimi246-5.jpg","fotos/karimi246-6.jpg"], expensas:"≈ Gs. 2.200.000", id:"karimi-246", estado:"terminado", nombre:"Edificio Karimi · 246 m²", barrio:"Catedral", precio:320000, m2:"246", dorm:"3 (1 suite)", coch:3,
     tag:"Vista al río · 2 deptos por piso", lindo:["Solo dos departamentos por piso","Vista abierta a la bahía","3 cocheras, una XL"],
     detalle:["246 m² totales","3 dormitorios, 1 en suite","4 baños","Sala comedor amplia con vista","Cocina amoblada","Área de servicio independiente","Vestidores amplios","3 cocheras (una XL)"],
@@ -412,7 +416,7 @@ const S = {
   mesDeptoPorM2: 16000   // Gs/m² por mes: expensas + luz + agua (supuesto)
 };
 const WA = "595981290892";
-const PISO = {"magnificat":"Piso 12","sky-garden":"Piso 8","miranda":"Piso 19","address-9":"Piso 9","mburucuya":"Piso 2","the-tower":"Piso 15","espana-las-mercedes":"Piso 8","tierra-alta-maestro":"Piso 5","habitalis-jardin":"Piso 6","the-forest":"Piso 11","grand-chelsea":"Pisos 10 y 11","montserrat-208":"Piso 12","tribeca":"Penthouse","palacio-patos":"Piso 25","barrio-jara":"Piso 1","calypso":"Pisos 11 y 12","montserrat":"Piso 6","pueblo-del-rio":"Piso 3","karimi-18":"Piso 18"};
+const PISO = {"magnificat":"Piso 12","sky-garden":"Piso 8","miranda":"Piso 19","address-9":"Piso 9","mburucuya":"Piso 2","the-tower":"Piso 15","espana-las-mercedes":"Piso 8","tierra-alta-maestro":"Piso 5","habitalis-jardin":"Piso 6","the-forest":"Piso 11","grand-chelsea":"Pisos 10 y 11","montserrat-208":"Piso 12","tribeca":"Penthouse","palacio-patos":"Piso 25","barrio-jara":"Piso 1","calypso":"Pisos 11 y 12","montserrat":"Piso 6","pueblo-del-rio":"Piso 3","karimi-18":"Piso 18","garay-530":"Piso 1"};
 const ZONA = {"calypso":"Trinidad","the-forest":"Trinidad","palacio-patos":"Trinidad","grand-chelsea":"Trinidad","pueblo-del-rio":"Nueva Asunción","magnificat":"Santa Teresa","tribeca":"Santa Teresa","miranda":"Santa Teresa","the-tower":"Santa Teresa","mburucuya-361":"Mburucuyá","address-3h":"Mburucuyá","address-9":"Mburucuyá","mburucuya":"Mburucuyá","tierra-alta-maestro":"Villa Morra y Recoleta","habitalis-jardin":"Villa Morra y Recoleta","velvet-mariscal":"Villa Morra y Recoleta","espana-las-mercedes":"Las Mercedes y San Roque","montserrat":"Las Mercedes y San Roque","montserrat-208":"Las Mercedes y San Roque","sky-garden":"Carmelitas y Perseverancia","victoria-regia":"Carmelitas y Perseverancia","torre-centenario":"Bella Vista","barrio-jara":"Barrio Jara","fragata":"Trinidad","karimi-246":"Catedral","karimi-18":"Catedral","bali-aqua":"Aqua Village (Altos)","patos-270":"Trinidad"};
 const zonaDe = d => ZONA[d.id] || "Otras zonas";
 const dormN = d => parseInt(d.dorm) || 0;
