@@ -520,7 +520,6 @@ function render(){
         ${pisoHtml(d)}
         ${factsHtml(d)}
         <ul class="goods">${d.lindo.map(x=>`<li>${x}</li>`).join("")}</ul>
-        ${libreHtml(d)}
         <a class="btn det" href="#depto-${d.id}">Ver todo el departamento</a>
       </div></article>`).join("")
     : `<p class="empty">No hay departamentos con esa búsqueda. Escribinos y te buscamos uno.</p>`;
