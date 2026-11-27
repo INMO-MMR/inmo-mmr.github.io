@@ -536,7 +536,6 @@ function renderDetalle(d){
     ${factsHtml(d)}
     ${libreHtml(d)}
     <a class="cta" href="${wa(msgVisita(d))}">Quiero visitarlo</a>
-    <p class="firma">Max Mendelzon<br><span>Century 21 Wilson-Chihan</span></p>
     <section class="card dsec"><h3>El departamento</h3><ul class="plain">${d.detalle.map(x=>`<li>${x}</li>`).join("")}</ul></section>
     ${d.amen&&d.amen.length?`<section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>`:""}
     ${d.nota?`<p class="dnote">${d.nota}</p>`:""}
