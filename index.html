@@ -42,6 +42,7 @@ h3{font-size:1.25rem}
 .ph.photo{height:240px;padding:0;position:relative;display:block;background:#222}
 .strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;height:100%;scrollbar-width:none}
 .strip img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.vslide{flex:0 0 100%;position:relative;scroll-snap-align:start;background:#111;cursor:pointer}.vslide img,.vslide video{width:100%;height:100%;object-fit:cover;display:block}.vslide video{object-fit:contain;background:#000}.vslide .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;padding-left:4px}.vslide .vlab{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;padding:3px 8px;border-radius:10px}
 .ph.photo .tag{position:absolute;left:14px;top:14px;background:rgba(0,0,0,.55)}
 .ph.photo .count{position:absolute;right:14px;bottom:14px;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:4px 10px;font-size:.9rem;font-weight:700}
 .ph .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:700}
@@ -299,7 +300,7 @@ const DEPTOS = [
     detalle:["183,95 m² propios (251,19 m² totales)","2 dormitorios en suite, el principal con vestidor","Amplio living comedor","Baño social","Cocina independiente con desayunador","Lavadero y área de servicio completa","1 cochera"],
     amen:["Guardia 24 h y conserjería","Piscina para adultos y para niños","Gimnasio","Spa con sauna y sala de masajes","Peluquería","Salón de eventos","Sala de niños"],
     nota:"Fotos de la unidad del piso 23 (alquilada). La del piso 21 es igual, mismo precio, y está libre para visitar." },
-  { fotos:["fotos/fragata-1.jpg","fotos/fragata-2.jpg","fotos/fragata-3.jpg","fotos/fragata-4.jpg","fotos/fragata-5.jpg","fotos/fragata-6.jpg","fotos/fragata-7.jpg","fotos/fragata-8.jpg","fotos/fragata-9.jpg"], expensas:null, id:"fragata", estado:"terminado", nombre:"Edificio Fragata · 2 y 3 dormitorios", barrio:"Trinidad · Av. Primer Presidente", precio:370000, precioTxt:"Desde USD 370.000", m2:"174 a 229", dorm:"2 o 3", coch:2,
+  { fotos:["fotos/fragata-1.jpg","fotos/fragata-2.jpg","fotos/fragata-3.jpg","fotos/fragata-4.jpg","fotos/fragata-5.jpg","fotos/fragata-6.jpg","fotos/fragata-7.jpg","fotos/fragata-8.jpg","fotos/fragata-9.jpg"], expensas:null, video:{src:"fotos/fragata-video.mp4",poster:"fotos/fragata-video.jpg"}, id:"fragata", estado:"terminado", nombre:"Edificio Fragata · 2 y 3 dormitorios", barrio:"Trinidad · Av. Primer Presidente", precio:370000, precioTxt:"Desde USD 370.000", m2:"174 a 229", dorm:"2 o 3", coch:2,
     tag:"A estrenar · 11 unidades", lindo:["De 174 a 229 m² propios","Cada unidad con 2 cocheras y baulera","Pisos de madera y mucha luz natural"],
     detalle:["2 dormitorios: 174 a 182 m² propios, desde USD 370.000","3 dormitorios: 221 a 229 m² propios, desde USD 420.000","Unidades al frente o al fondo, del 1er al 4to piso","2 cocheras y 1 baulera incluidas en cada unidad"],
     amen:["Planta baja y 4 pisos","Unidades a estrenar"],
@@ -477,7 +478,7 @@ const publicable = d => !d.oculto && Array.isArray(d.fotos) && d.fotos.length >=
 function fotoHtml(d){
   const [c1,c2]=colores(d);
   return d.fotos
-    ? `<div class="ph photo"><div class="strip">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" data-lb="${d.id}" data-k="${k}"${k?' loading="lazy"':''} decoding="async">`).join("")}</div>${d.fotos.length>1?`<button class="nav p" data-mv="-1" aria-label="Foto anterior">‹</button><button class="nav n" data-mv="1" aria-label="Foto siguiente">›</button>`:""}<span class="tag">${d.tag}</span><span class="count" data-lb="${d.id}" data-k="0">Ver las ${d.fotos.length} fotos</span></div>`
+    ? `<div class="ph photo"><div class="strip">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" data-lb="${d.id}" data-k="${k}"${k?' loading="lazy"':''} decoding="async">`+(k===0&&d.video?`<div class="vslide" data-vid="${d.video.src}"><img src="${d.video.poster}" alt="Video de ${d.nombre}" loading="lazy"><span class="play" aria-label="Ver video">▶</span><span class="vlab">Video</span></div>`:"")).join("")}</div>${d.fotos.length>1?`<button class="nav p" data-mv="-1" aria-label="Foto anterior">‹</button><button class="nav n" data-mv="1" aria-label="Foto siguiente">›</button>`:""}<span class="tag">${d.tag}</span><span class="count" data-lb="${d.id}" data-k="0">Ver las ${d.fotos.length} fotos</span></div>`
     : `<div class="ph" style="--c1:${c1};--c2:${c2}"><span class="tag">${d.tag}</span></div>`;
 }
 function factsHtml(d){
@@ -650,7 +651,9 @@ calc(); route();
   function close(){lb.classList.remove("on");document.body.style.overflow="";}
   function mv(n){k=(k+n+cur.fotos.length)%cur.fotos.length;show();}
   document.addEventListener("click",e=>{
-    if(!e.target.closest("[data-mv],.count,a,button,select,input,summary")){
+    const vs=e.target.closest(".vslide");
+    if(vs){ if(!vs.querySelector("video")){vs.innerHTML=`<video src="${vs.dataset.vid}" controls autoplay playsinline preload="auto"></video>`;} e.preventDefault(); return; }
+    if(!e.target.closest("[data-mv],.count,a,button,select,input,summary,video")){
       const card=e.target.closest("article.prop[data-go]");
       if(card){location.hash="depto-"+card.dataset.go;e.preventDefault();return;}
     }
