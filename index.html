@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Conocé departamentos amplios en Asunción, con seguridad y menos mantenimiento.">
+<meta name="description" content="Conocé departamentos amplios en Asunción y alrededores, con seguridad y menos mantenimiento.">
 <meta property="og:title" content="¿Estás pensando en pasar de una casa a un departamento?">
 <meta property="og:description" content="Conocé opciones amplias, con seguridad y menos mantenimiento.">
 <meta property="og:image" content="https://inmo-mmr.github.io/fotos/mburucuya-361-1.jpg">
@@ -49,7 +49,7 @@ h3{font-size:1.25rem}
 .body{padding:18px 20px 20px}
 .barrio{color:var(--warm);font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.05em}
 .price{font-family:"Source Serif 4",Georgia,serif;font-size:1.7rem;font-weight:700;color:var(--accent);margin:6px 0 10px}
-.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .fact{background:var(--accent-2);border-radius:10px;padding:8px 6px;text-align:center;font-size:.9rem;color:var(--muted)}
 .fact b{display:block;color:var(--ink);font-size:1.05rem}
 .goods{margin:0 0 14px;padding-left:20px;color:var(--ink);font-size:.95rem}
@@ -138,6 +138,10 @@ article.prop[data-go]{cursor:pointer}
 .hero .cta.sec{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;cursor:pointer;background:#fff;color:var(--accent);border:2px solid var(--accent);font-weight:700;font-size:1.1rem;padding:16px;border-radius:14px;margin-top:10px}
 .opcional{color:var(--muted);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:0 0 4px}
 .est{margin:8px 0 0;font-size:.88rem;color:var(--muted)}
+.firma{text-align:center;color:var(--muted);font-size:.95rem;font-weight:700;margin:10px 0 0}
+.phone strong,.firma span,.sig span{white-space:nowrap}
+.ph.playing .tag,.ph.playing .count,.ph.playing .nav{display:none}
+.cuenta{color:var(--muted);font-size:.95rem;margin:10px 0 0}
 </style>
 </head>
 <body>
@@ -146,6 +150,7 @@ article.prop[data-go]{cursor:pointer}
   <header class="hero">
     <img class="heroimg" src="fotos/pueblo-1.jpg" alt="Living de un departamento con ventanales y vista al río">
     <h1 id="hTit">¿Estás pensando en pasar de una casa a un departamento?</h1>
+    <p class="firma"><span>Max Mendelzon ·</span> <span>Century 21 Wilson-Chihan</span></p>
     <button class="cta asbtn" id="verDeptosTop" type="button">Ver departamentos</button>
   </header>
 
@@ -192,7 +197,6 @@ article.prop[data-go]{cursor:pointer}
     <p class="neto" style="font-size:.85em;opacity:.8;margin-top:8px">Son montos aproximados: los números reales dependen de tu casa y de tus papeles.</p>
     </details>
     </div>
-    <p class="neto" id="netoAlq" hidden>Alquilándola, podrías recibir cerca de <b id="rAlq">—</b> por mes<br><span style="font-size:.85em;opacity:.8">Es una estimación: el alquiler real depende de las características de tu casa.</span></p>
     <button class="cta asbtn" id="verDeptos">Ver departamentos</button>
   </section>
 
@@ -217,12 +221,13 @@ article.prop[data-go]{cursor:pointer}
     <label for="fZona" style="display:block;margin-top:10px;font-weight:700;color:var(--ink,#1d2b27)">Barrio</label>
     <select id="fZona" class="zsel"><option value="">Todos los barrios</option></select>
     </details>
+    <p class="cuenta" id="cuenta"></p>
     <div id="catalogo"></div>
   </div>
 
   <section class="card result" id="paso4" hidden aria-label="Tasación gratis">
-    <p class="step light">Tasación gratis de tu casa</p>
-    <p class="label">Vamos a tu casa sin costo y sin compromiso.</p>
+    <p class="step light" id="p4t">Tasación gratis de tu casa</p>
+    <p class="label" id="p4s">Vamos a tu casa sin costo y sin compromiso.</p>
     <label class="flabel" for="fNombre">Tu nombre</label>
     <input class="inp" id="fNombre" autocomplete="name" placeholder="Ej.: María González">
     <label class="flabel" for="fBarrio">¿En qué barrio está tu casa?</label>
@@ -241,10 +246,7 @@ article.prop[data-go]{cursor:pointer}
 
 
 
-    <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
-      <div class="quien"><div class="ava" aria-hidden="true">MM</div>
-      <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
-      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos te acompañamos en todo: la tasación y venta de tu casa, y la elección de tu nuevo departamento.</p></div></div></details></div>
+    <div class="sig"><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario ·</span> <span>Century 21 Wilson-Chihan</span></div>
   </div>
 
 </div>
@@ -254,7 +256,7 @@ article.prop[data-go]{cursor:pointer}
 <script>
 // ===== CATÁLOGO (avisos de colegas en grupos C21, oct–nov 2026; confirmar disponibilidad y precio) =====
 const DEPTOS = [
-  { fotos:["fotos/augusta-1.jpg","fotos/augusta-2.jpg","fotos/augusta-3.jpg","fotos/augusta-4.jpg","fotos/augusta-5.jpg","fotos/augusta-6.jpg"], expensas:"≈ Gs. 1.100.000", video:{src:"fotos/augusta-video.mp4",poster:"fotos/augusta-video.jpg"}, id:"torre-augusta", estado:"terminado", nombre:"Torre Augusta 3 · 3 dormitorios, 142 m²", barrio:"Las Mercedes", precio:259122, precioTxt:"Desde USD 259.122", m2:"142", dorm:"3", coch:null,
+  { fotos:["fotos/augusta-1.jpg","fotos/augusta-2.jpg","fotos/augusta-3.jpg","fotos/augusta-4.jpg","fotos/augusta-5.jpg","fotos/augusta-6.jpg"], expensas:"≈ Gs. 1.100.000", video:{src:"fotos/augusta-video.mp4",poster:"fotos/augusta-video.jpg"}, id:"torre-augusta", estado:"terminado", nombre:"Torre Augusta 3 · 3 dormitorios, 142 m²", barrio:"Las Mercedes", precio:259122, precioTxt:"Desde USD 259.122", m2:"142", dorm:"3", coch:null, cochTxt:"cochera",
     tag:"A estrenar · Entrega dic. 2026", lindo:["Suite principal con vestidor","Balcón con parrilla","Dormitorio y baño de servicio"],
     detalle:["142 m²","3 dormitorios, 1 en suite con vestidor","Baño familiar y baño social","Living y comedor integrados","Balcón con parrilla","Cocina con lavadero integrado al mueble","Dormitorio y baño de servicio","Cochera aparte: USD 15.000"],
     amen:[],
@@ -274,7 +276,7 @@ const DEPTOS = [
     detalle:["Unidades de 3 dormitorios y un penthouse","Espacios amplios pensados para recibir","Materiales clásicos de alta calidad y bajo mantenimiento","Cochera adicional: USD 27.000"],
     amen:["Piscina y solárium","Gimnasio equipado","Wellness center, spa y sala de yoga","Salón de eventos con cocina y parrilla","Área de juegos y nursery"],
     nota:"Imágenes ilustrativas del proyecto. Dr. Cirilo Cáceres Zorrilla c/ Narciso R. Colman." },
-  { fotos:["fotos/mei-1.jpg","fotos/mei-2.jpg","fotos/mei-3.jpg","fotos/mei-4.jpg","fotos/mei-5.jpg","fotos/mei-6.jpg"], expensas:null, id:"mei-residence", estado:"pozo", nombre:"MEI Residence · 2 y 3 dormitorios", barrio:"Asunción", precio:333326, precioTxt:"Desde USD 333.326", m2:"156 a 191", dorm:"2 o 3", coch:null,
+  { fotos:["fotos/mei-1.jpg","fotos/mei-2.jpg","fotos/mei-3.jpg","fotos/mei-4.jpg","fotos/mei-5.jpg","fotos/mei-6.jpg"], expensas:null, id:"mei-residence", estado:"pozo", nombre:"MEI Residence · 2 y 3 dormitorios", barrio:"Asunción", precio:333326, precioTxt:"Desde USD 333.326", m2:"156 a 191", dorm:"2 o 3", coch:null, cochTxt:"cochera",
     tag:"Entrega diciembre 2029", lindo:["Pagás 20% y el resto en cuotas sin intereses","Cine, cowork, 3 quinchos y piscina","Generador para todo el edificio"],
     detalle:["3 dormitorios, 191 m²: desde USD 409.705","2 o 3 dormitorios, 156 m²: desde USD 333.326","Cocheras aparte: desde USD 21.315","Entrega: diciembre 2029","Forma de pago: 20% de entrega, saldo durante la obra sin intereses y 36 cuotas después de la entrega"],
     amen:["Piscina y jardín","Gimnasio, sauna e hidromasaje","Cine y sala de cowork","3 quinchos gourmet climatizados y terraza","Kids club y parque infantil","Seguridad 24 h y generador para el 100% del edificio"],
@@ -283,7 +285,7 @@ const DEPTOS = [
     tag:"3 dormitorios · Balcón con parrilla", lindo:["Balcón con parrilla","Cocina independiente y lavadero","Piscina, gimnasio y quincho climatizado"],
     detalle:["119 m²","3 dormitorios, 1 en suite con vestidor","Baño familiar y baño social","Amplio living comedor","Cocina independiente","Lavadero","Balcón con parrilla","1 cochera incluida"],
     amen:["Piscina","Gimnasio","Quincho climatizado"] },
-  { fotos:["fotos/karimi246-1.jpg","fotos/karimi246-2.jpg","fotos/karimi246-3.jpg","fotos/karimi246-4.jpg","fotos/karimi246-5.jpg","fotos/karimi246-6.jpg"], expensas:"≈ Gs. 2.200.000", id:"karimi-246", estado:"terminado", nombre:"Edificio Karimi · 246 m²", barrio:"Catedral", precio:320000, m2:"246", dorm:"3 (1 suite)", coch:3,
+  { fotos:["fotos/karimi246-1.jpg","fotos/karimi246-2.jpg","fotos/karimi246-3.jpg","fotos/karimi246-4.jpg","fotos/karimi246-5.jpg","fotos/karimi246-6.jpg"], expensas:"≈ Gs. 2.200.000", id:"karimi-246", estado:"terminado", nombre:"Edificio Karimi · 246 m²", barrio:"Catedral", precio:320000, m2:"246", m2lab:"totales", dorm:"3 (1 suite)", coch:3,
     tag:"Vista al río · 2 deptos por piso", lindo:["Solo dos departamentos por piso","Vista abierta a la bahía","3 cocheras, una XL"],
     detalle:["246 m² totales","3 dormitorios, 1 en suite","4 baños","Sala comedor amplia con vista","Cocina amoblada","Área de servicio independiente","Vestidores amplios","3 cocheras (una XL)"],
     amen:["Gimnasio","Salón de eventos","Quinchos","Área de juegos y parque infantil"] },
@@ -291,9 +293,9 @@ const DEPTOS = [
     tag:"Piso 18 · Vista al río", lindo:["3 dormitorios en suite","Vista a la bahía desde el piso 18","Pisos de madera"],
     detalle:["256 m²","3 dormitorios en suite","Living y estar diario","Cocina con muebles","Área de servicio con habitación y baño","Cochera en el piso 2"],
     amen:["Piscina","Quincho cerrado y amplia terraza","Gimnasio y sauna","Área de niños","Salón de fiestas"] },
-  { fotos:["fotos/bali-1.jpg","fotos/bali-2.jpg","fotos/bali-3.jpg","fotos/bali-4.jpg","fotos/bali-5.jpg","fotos/bali-6.jpg"], expensas:null, id:"bali-aqua", estado:"terminado", nombre:"Edificio Bali · Aqua Village", barrio:"Aqua Village (Altos)", precio:298000, m2:"110", dorm:"2 suites", coch:null,
+  { fotos:["fotos/bali-1.jpg","fotos/bali-2.jpg","fotos/bali-3.jpg","fotos/bali-4.jpg","fotos/bali-5.jpg","fotos/bali-6.jpg"], expensas:null, id:"bali-aqua", estado:"terminado", nombre:"Edificio Bali · Aqua Village", barrio:"Aqua Village (Altos)", precio:298000, m2:"110", dorm:"2 suites", coch:2,
     tag:"Amoblado · Vista a la laguna", lindo:["Totalmente amoblado","Balcón con vista a la laguna cristalina","Club de playa, tenis y senderos"],
-    detalle:["110 m²","2 dormitorios en suite","3 baños","Living y comedor integrados","Baño social","Amplio balcón con vista a la laguna"],
+    detalle:["110 m²","2 dormitorios en suite","3 baños","Living y comedor integrados","Baño social","Amplio balcón con vista a la laguna","2 cocheras"],
     amen:["Laguna cristalina con playa","Club de playa con restaurante","Dos canchas de tenis y cancha sintética","Gimnasio","Senderos y lagunas naturales","Parques infantiles","Control de ingresos y seguridad 24 h"] },
   { fotos:["fotos/patos270-1.jpg","fotos/patos270-2.jpg","fotos/patos270-3.jpg","fotos/patos270-4.jpg","fotos/patos270-5.jpg"], expensas:"≈ Gs. 1.978.000", id:"patos-270", estado:"terminado", nombre:"Palacio de los Patos · 2 suites, 184 m²", barrio:"Trinidad", precio:270000, m2:"184", dorm:"2 suites", coch:1,
     tag:"184 m² propios · Vista abierta", lindo:["184 m² propios (251 m² totales)","Cocina independiente con desayunador","Seguridad 24 h y conserjería"],
@@ -320,10 +322,10 @@ const DEPTOS = [
     detalle:["361 m² propios","3 dormitorios en suite; la principal con amplio vestidor y salida al balcón","Hall de acceso principal y baño social","Living comedor amplio con parrilla integrada","Cocina independiente con isla (muebles empotrados incluidos)","Área de servicio completa: dormitorio, baño y lavadero","4 cocheras en el subsuelo y 1 baulera"],
     amen:["Guardia y portería 24 horas, circuito cerrado","Piscina con terraza amoblada y quincho en la terraza","Salón de eventos climatizado y quincho en planta baja","Gimnasio, sauna y sala de juegos","Vinoteca con bar en el subsuelo","Generador para todo el edificio"],
     nota:"" },
-  { fotos:["fotos/tribeca-1.jpg","fotos/tribeca-2.jpg","fotos/tribeca-3.jpg","fotos/tribeca-4.jpg","fotos/tribeca-5.jpg","fotos/tribeca-6.jpg","fotos/tribeca-7.jpg","fotos/tribeca-8.jpg","fotos/tribeca-9.jpg"], expensas:"USD 1,1 a 1,2 por m²", id:"tribeca", estado:"terminado", nombre:"Tribeca Santa Teresa · Penthouse", barrio:"Santa Teresa", precio:820000, m2:362.5, dorm:"3 suites", coch:4,
-    tag:"Penthouse · Terraza", lindo:["Terraza de 52 m² con quincho propio","3 ascensores, aire central","Piscina de borde infinito y sala de masajes"],
+  { fotos:["fotos/tribeca-1.jpg","fotos/tribeca-2.jpg","fotos/tribeca-3.jpg","fotos/tribeca-4.jpg","fotos/tribeca-5.jpg","fotos/tribeca-6.jpg","fotos/tribeca-7.jpg","fotos/tribeca-8.jpg","fotos/tribeca-9.jpg"], expensas:"USD 1,1 a 1,2 por m²", id:"tribeca", estado:"terminado", nombre:"Tribeca Santa Teresa · Penthouse", barrio:"Santa Teresa", precio:820000, m2:362.5, m2lab:"con terraza", dorm:"3 suites", coch:4,
+    tag:"Penthouse · Terraza", lindo:["Terraza de 52 m² con quincho propio","Aire acondicionado central","Piscina de borde infinito y sala de masajes"],
     detalle:["310 m² más 52,5 m² de terraza","Master suite con balcón propio y doble vestidor","2 dormitorios en suite con vestidor","Sala comedor integrada","Cocina semiamoblada, separada","Terraza amplia con quincho propio","Dormitorio de servicio con baño y entrada independiente","Aire acondicionado central, piso de lapacho en dormitorios","4 cocheras techadas y 1 baulera"],
-    amen:["3 ascensores","Piscina de borde infinito","Gimnasio y sala de masajes","2 salones parrilleros climatizados","Coworking, sala de reuniones y cancha de pádel"],
+    amen:["Piscina de borde infinito","Gimnasio y sala de masajes","2 salones parrilleros climatizados","Coworking, sala de reuniones y cancha de pádel"],
     nota:"A cuadras del Colegio Goethe y del Paseo La Galería." },
   { expensas:null, fotos:["fotos/stratos-1.jpg"], id:"stratos", estado:"terminado", nombre:"Stratos · Penthouse 10 A", barrio:"Av. Molas López", precio:720000, m2:308, dorm:"4 suites", coch:3,
     tag:"Penthouse · Dos plantas", lindo:["Terraza con quincho y piscina propia","4 dormitorios en suite con vestidor","Área de servicio con habitación y baño"],
@@ -351,14 +353,14 @@ const DEPTOS = [
     amen:["Gimnasio, sauna, pilates y masajes","Piscina en la azotea y quinchos gourmet","Circuito para caminar","Generador para el 100% del edificio"],
     nota:"Hoy tiene renta activa de USD 2.600 por mes." },
   { expensas:"USD 273", id:"victoria-regia", estado:"terminado", nombre:"Torre Victoria Regia", barrio:"Distrito Perseverancia", precio:486000, m2:182, dorm:"2 suites", coch:2,
-    tag:"Primer piso · Listo dic–ene", lindo:["Primer piso: casi sin depender del ascensor","Sala amplia, remodelado de 3 a 2 suites","Área de servicio con dormitorio y baño"],
+    tag:"Primer piso · Listo dic–ene", lindo:["Primer piso, con acceso fácil","Sala amplia, remodelado de 3 a 2 suites","Área de servicio con dormitorio y baño"],
     detalle:["Primer piso, 182 m²","Remodelado de 3 a 2 dormitorios en suite: sala mucho más amplia","Sala comedor amplia y baño social","Cocina integrada","Lavadero y área de servicio con dormitorio y baño","Balcón amplio con parrilla; cierre y climatización ya autorizados","2 cocheras y 1 baulera"],
     amen:["Complejo Distrito Perseverancia"],
-    nota:"Se termina de remodelar entre fines de diciembre 2026 y enero 2027. Expensas: USD 1,5 por m²." },
+    nota:"Se termina de remodelar entre fines de diciembre 2026 y enero 2027." },
   { expensas:"≈ Gs. 1.800.000", fotos:["fotos/mburucuya-1.jpg","fotos/mburucuya-3.jpg","fotos/mburucuya-5.jpg","fotos/mburucuya-4.jpg","fotos/mburucuya-2.jpg"], id:"mburucuya", estado:"terminado", nombre:"Edificio Mburucuyá", barrio:"Mburucuyá", precio:380000, m2:173, dorm:"2 suites", coch:2,
-    tag:"Usado · Listo", lindo:["Cocina amplia amoblada y equipada","Área de servicio con habitación y baño","Ascensor, piscina y terraza"],
+    tag:"Usado · Listo", lindo:["Cocina amplia amoblada y equipada","Área de servicio con habitación y baño","Piscina y terraza"],
     detalle:["173 m²","2 dormitorios en suite y baño social","Sala comedor","Cocina amplia amoblada y equipada","Lavadero y área de servicio con habitación y baño","2 cocheras y 1 baulera"],
-    amen:["Terraza amplia y piscina","Ascensor y lobby","Salón de eventos"] },
+    amen:["Terraza amplia y piscina","Lobby","Salón de eventos"] },
   { expensas:"≈ Gs. 2.200.000", fotos:["fotos/lexcellence-1.jpg"], id:"lexcellence", estado:"terminado", nombre:"L'Excellence · Piso 14", barrio:"Frente al Yacht y Golf", precio:350000, m2:228, dorm:"3", coch:3,
     tag:"Vista al río", lindo:["Vista al río Paraguay","Dormitorio y baño de servicio","Piscina, sauna y 2 quinchos"],
     detalle:["Piso 14, 228 m², vista al río Paraguay","Suite principal con 2 vestidores","2 dormitorios con baño familiar","Living comedor amplio con grandes ventanales","Baño social y cocina equipada","Lavadero, dormitorio y baño de servicio","3 cocheras, 2 bauleras y lugar para carrito de golf o moto"],
@@ -367,8 +369,8 @@ const DEPTOS = [
     tag:"Palier privado", lindo:["Seguridad 24 horas","Apto para crédito bancario","Cocina independiente equipada"],
     detalle:["Piso 15, 175,5 m²","3 dormitorios en suite","Palier privado","Living comedor amplio con balcón y vista abierta","Cocina independiente equipada","Área de servicio completa","2 cocheras","Terminaciones premium"],
     amen:["Seguridad 24 horas","Amenities completos"],
-    nota:"Apto para crédito bancario. Alquilado hasta noviembre." },
-  { fotos:["fotos/centenario-1.jpg","fotos/centenario-2.jpg","fotos/centenario-3.jpg","fotos/centenario-4.jpg","fotos/centenario-5.jpg","fotos/centenario-6.jpg","fotos/centenario-7.jpg","fotos/centenario-8.jpg","fotos/centenario-9.jpg","fotos/centenario-10.jpg","fotos/centenario-11.jpg","fotos/centenario-12.jpg"], expensas:"Gs. 2.400.000", id:"torre-centenario", estado:"terminado", nombre:"Torre Centenario · 3 dormitorios", barrio:"Bella Vista", precio:270000, m2:204, dorm:"3", coch:2,
+    nota:"Apto para crédito bancario." },
+  { fotos:["fotos/centenario-1.jpg","fotos/centenario-2.jpg","fotos/centenario-3.jpg","fotos/centenario-4.jpg","fotos/centenario-5.jpg","fotos/centenario-6.jpg","fotos/centenario-7.jpg","fotos/centenario-8.jpg","fotos/centenario-9.jpg","fotos/centenario-10.jpg","fotos/centenario-11.jpg","fotos/centenario-12.jpg"], expensas:"Gs. 2.400.000", id:"torre-centenario", estado:"terminado", nombre:"Torre Centenario · 3 dormitorios", barrio:"Bella Vista", precio:270000, m2:204, m2lab:"totales", dorm:"3", coch:2,
     tag:"Edificio boutique · Listo", lindo:["204 m² en un edificio boutique de 6 pisos","Terraza con parrilla y vista abierta","A 450 m del Club Centenario"],
     detalle:["204 m² totales (168 m² refrigerados)","3 dormitorios; suite principal con vestidor","4 baños (incluye social y de servicio)","Living comedor amplio con salida a terraza","Terraza con parrilla propia","Cocina independiente con desayunador de granito","Área de servicio completa","2 cocheras y baulera"],
     amen:["Salón social para 50 personas","Estar con TV, ping-pong y pool","Parrillero techado al aire libre","Piscina con solárium y jardín"] },
@@ -396,11 +398,11 @@ const DEPTOS = [
     tag:"Amoblado y decorado · Listo para mudarse", lindo:["Finamente amoblado y decorado","A 300 m de la Avda. Mcal. López","Cochera para 3 vehículos"],
     detalle:["108,6 m² propios, piso 5","Living comedor","Cocina integrada","Baño social","Balcón con parrilla","2 dormitorios en suite","Área de servicio (lavadero, dormitorio y baño)","Cochera para 3 vehículos y baulera"],
     amen:["Piscina","Gimnasio","Quincho con parrilla","Sala de reuniones","Portero 24 horas"] },
-  { fotos:["fotos/habitalis-1.jpg","fotos/habitalis-2.jpg","fotos/habitalis-3.jpg","fotos/habitalis-4.jpg","fotos/habitalis-5.jpg","fotos/habitalis-6.jpg"], expensas:"≈ USD 1,8 por m² (estimado)", id:"habitalis-jardin", estado:"pozo", nombre:"Habitalis Jardín · 3 dormitorios, piso 6", barrio:"Recoleta", precio:284800, m2:135, dorm:"3", coch:null,
+  { fotos:["fotos/habitalis-1.jpg","fotos/habitalis-2.jpg","fotos/habitalis-3.jpg","fotos/habitalis-4.jpg","fotos/habitalis-5.jpg","fotos/habitalis-6.jpg"], expensas:"≈ USD 1,8 por m² (estimado)", id:"habitalis-jardin", estado:"pozo", nombre:"Habitalis Jardín · 3 dormitorios, piso 6", barrio:"Recoleta", precio:284800, m2:135, dorm:"3", coch:null, cochTxt:"cochera",
     tag:"Entrega abril–mayo 2029", lindo:["Parque interior en el corazón del edificio","A 3 cuadras del Shopping Mariscal","Pago directo con el desarrollador, sin crédito bancario"],
     detalle:["135 m², piso 6 (dos unidades unidas)","3 dormitorios","Vista al jardín interno","Cochera opcional, se compra aparte","Plan de pago: 5% de seña, 15% a la firma, 50% en cuotas durante la obra y 30% contra entrega","Entrega estimada: abril o mayo de 2029"],
-    amen:["Parque interior con área kids y huerta orgánica","Piscina, gimnasio y salón de pilates","Terraza con sala gourmet y cava de vinos","Quincho exterior con jardines","Ascensores panorámicos","Lobby, sala de reuniones y coworking"],
-    nota:"Campos Cervera esq. Cruz del Chaco, Recoleta. Las imágenes son ilustrativas del desarrollador: la obra arranca en noviembre de 2026." },
+    amen:["Parque interior con área kids y huerta orgánica","Piscina, gimnasio y salón de pilates","Terraza con sala gourmet y cava de vinos","Quincho exterior con jardines","Lobby, sala de reuniones y coworking"],
+    nota:"Campos Cervera esq. Cruz del Chaco, Recoleta. Las imágenes son ilustrativas del desarrollador." },
   { fotos:["fotos/montserrat-1.jpg","fotos/montserrat-2.jpg","fotos/montserrat-3.jpg","fotos/montserrat-4.jpg","fotos/montserrat-5.jpg","fotos/montserrat-6.jpg","fotos/montserrat-7.jpg","fotos/montserrat-8.jpg","fotos/montserrat-9.jpg"], expensas:"Gs. 1.500.000 a 1.800.000", id:"montserrat", estado:"terminado", nombre:"Edificio Montserrat · 3 dormitorios", barrio:"San Roque / Las Mercedes", precio:250000, m2:150, dorm:"3", coch:1,
     tag:"Vista abierta", lindo:["Vista abierta hacia la bahía","Ambientes amplios y construcción sólida","Cerca del Colegio San José y Las Teresas"],
     detalle:["150 m² propios","3 dormitorios (1 en suite)","Living y comedor integrados, amplios","Cocina independiente y lavadero","Habitación de servicio con baño","Balcón","Cochera techada y baulera"],
@@ -426,7 +428,7 @@ const DEPTOS = [
   { expensas:"≈ USD 1,2 por m² (estimado)", fotos:["fotos/algarrobo-1.jpg","fotos/algarrobo-2.jpg","fotos/algarrobo-3.jpg","fotos/algarrobo-4.jpg","fotos/algarrobo-5.jpg","fotos/algarrobo-6.jpg","fotos/algarrobo-7.jpg"], id:"algarrobo", estado:"pozo", nombre:"Edificio Algarrobo · Depto A", barrio:"Mburicao", precio:430100, m2:187, dorm:"3", coch:null,
     tag:"Entrega marzo 2027", lindo:["Edificio boutique: solo 6 departamentos","A 2 min del Club Centenario","Financiación propia en cuotas"],
     detalle:["187 m²","3 dormitorios, 1 en suite","2 baños completos y toilette","Sala comedor y balcón con parrilla","Cocina, lavadero y área de servicio","Entrega estimada: marzo 2027"],
-    amen:["Solo 6 departamentos","Quincho y salón de eventos","Terraza, ascensor y lobby","Estacionamientos y bauleras"],
+    amen:["Solo 6 departamentos","Quincho y salón de eventos","Terraza y lobby","Estacionamientos y bauleras"],
     nota:"A 2 min del Club Centenario, 6 min del Parque Seminario y 8 min del Shopping Mariscal López. Las imágenes son ilustrativas: el edificio está en obra." }
 ].sort((a,b)=>b.precio-a.precio);
 const PAL = [["#2f6b55","#16382c"],["#3d5a80","#1d2d44"],["#a0622a","#5c3414"],["#6b705c","#3a3d31"],["#7a3e48","#3f1f26"]];
@@ -452,14 +454,12 @@ const $ = id => document.getElementById(id);
 const usd = n => "USD " + Math.round(n).toLocaleString("es-PY");
 const QS = new URLSearchParams(location.search);
 const HIJOS = QS.get("p")==="hijos";
-const REF = (QS.get("r")||(HIJOS?"H":"")).replace(/[^\w-]/g,"").slice(0,12);
+const REF = (QS.get("r")||"").replace(/[^\w-]/g,"").slice(0,12);
 const HIJ = [["Estoy pensando poner mi casa","Mis papás están pensando poner su casa"],["Estoy pensando en vender mi casa","Mis papás están pensando en vender su casa"],["tengo una casa que estoy pensando","mis papás tienen una casa que están pensando"],["tengo una casa y me gustaría","mis papás tienen una casa y nos gustaría"],["Tengo una casa y me gustaría","Mis papás tienen una casa y nos gustaría"],["Tengo una casa","Mis papás tienen una casa"],["en cuánto podría venderla","en cuánto se podría vender"],["en mi zona","en su zona"],["Vi los departamentos","Vi los departamentos para mis papás"]];
 const voz = t => HIJOS ? HIJ.reduce((x,[a,b])=>x.split(a).join(b), t) : t;
-const conRef = t => !REF ? t : (/Mi nombre es $/.test(t) ? t.replace(/Mi nombre es $/, `(ref ${REF}) Mi nombre es `) : `${t} (ref ${REF})`);
+const conRef = t => !REF ? t : `${t} (ref ${REF})`;
 const wa  = t => `https://wa.me/${WA}?text=${encodeURIComponent(conRef(voz(t)))}`;
 const tieneCasa = () => st.casa==="vender" || st.casa==="alquilar" || st.casa==="tasar";
-const RENTA_MES = 0.004; // supuesto: alquiler mensual ≈ 0,4% del valor de la casa
-const alqMes = () => valorCasa()*RENTA_MES;
 const ALQTXT = {solo:"solo en alquiler", opcion:"en alquiler con opción a compra", igual:"en alquiler"};
 function fraseCasa(){
   if (st.casa==="alquilar") return `tengo una casa que estoy pensando poner ${ALQTXT[st.alq]||"en alquiler"}`;
@@ -473,20 +473,22 @@ function netoCasa(){ return valorCasa()*(1-S.comisionVenta-S.irp-S.gastosVenta-S
 function show(id, scroll){ const el=$(id); el.hidden=false; if(scroll) setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60); }
 const colores = d => PAL[DEPTOS.indexOf(d)%PAL.length];
 
-const MIN_FOTOS = 5;
-const publicable = d => !d.oculto && Array.isArray(d.fotos) && d.fotos.length >= MIN_FOTOS;
+const MIN_FOTOS = 5, MIN_PRECIO = 200000;
+// Regla: sin precio, m², dormitorios, cocheras, barrio y 5 fotos, el depto NO se muestra.
+const completo = d => d.precio>=MIN_PRECIO && !!d.m2 && !!d.dorm && !/consultar/i.test(d.dorm) && (d.coch!=null || !!d.cochTxt) && !!d.barrio;
+const publicable = d => !d.oculto && Array.isArray(d.fotos) && d.fotos.length >= MIN_FOTOS && completo(d);
+const m2lab = d => d.m2lab || (d.detalle.concat(d.lindo).some(x=>/m² propios/.test(x)) ? "propios" : "superficie");
 function fotoHtml(d){
   const [c1,c2]=colores(d);
   return d.fotos
-    ? `<div class="ph photo"><div class="strip">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" data-lb="${d.id}" data-k="${k}"${k?' loading="lazy"':''} decoding="async">`+(k===0&&d.video?`<div class="vslide" data-vid="${d.video.src}"><img src="${d.video.poster}" alt="Video de ${d.nombre}" loading="lazy"><span class="play" aria-label="Ver video">▶</span><span class="vlab">Video</span></div>`:"")).join("")}</div>${d.fotos.length>1?`<button class="nav p" data-mv="-1" aria-label="Foto anterior">‹</button><button class="nav n" data-mv="1" aria-label="Foto siguiente">›</button>`:""}<span class="tag">${d.tag}</span><span class="count" data-lb="${d.id}" data-k="0">Ver las ${d.fotos.length} fotos</span></div>`
+    ? `<div class="ph photo"><div class="strip">${d.fotos.map((f,k)=>`<img src="${f}" alt="${d.nombre}, foto ${k+1}" data-lb="${d.id}" data-k="${k}" loading="lazy" decoding="async">`+(k===0&&d.video?`<div class="vslide" data-vid="${d.video.src}"><img src="${d.video.poster}" alt="Video de ${d.nombre}" loading="lazy"><span class="play" aria-label="Ver video">▶</span><span class="vlab">Video</span></div>`:"")).join("")}</div>${d.fotos.length>1?`<button class="nav p" data-mv="-1" aria-label="Foto anterior">‹</button><button class="nav n" data-mv="1" aria-label="Foto siguiente">›</button>`:""}<span class="tag">${d.tag}</span><span class="count" data-lb="${d.id}" data-k="0">Ver las ${d.fotos.length} fotos</span></div>`
     : `<div class="ph" style="--c1:${c1};--c2:${c2}"><span class="tag">${d.tag}</span></div>`;
 }
 function factsHtml(d){
   return `<div class="facts">
-    <div class="fact"><b>${m2txt(d)}</b>propios</div>
+    <div class="fact"><b>${m2txt(d)}</b>${m2lab(d)}</div>
     <div class="fact"><b>${d.dorm}</b>dormitorios</div>
-    <div class="fact"><b>${d.coch??"Consultar"}</b>${d.coch===1?"cochera":"cocheras"}</div>
-    <div class="fact"><b>${d.expensas?(typeof d.expensas==="string"?d.expensas:gsFmt(d.expensas)):"A confirmar"}</b>expensas por mes</div></div>`;
+    <div class="fact">${d.coch!=null?`<b>${d.coch}</b>${d.coch===1?"cochera":"cocheras"}`:`<b>Aparte</b>${d.cochTxt}`}</div></div>`;
 }
 function libreHtml(d){
   if (st.casa!=="vender" && st.casa!=="tasar") return "";
@@ -507,6 +509,7 @@ function msgTasa(d){
 function render(){
   const list = DEPTOS.filter(d => publicable(d) && d.estado===st.estado && (st.filtro==="all" || (st.filtro==="lt500" ? d.precio<=500000 : d.precio>500000))
     && (!st.zona || zonaDe(d)===st.zona) && (!st.dorm || (st.dorm==="2" ? dormN(d)===2 : dormN(d)>=3)));
+  $("cuenta").textContent = list.length ? (list.length===1 ? "1 departamento" : list.length+" departamentos") : "";
   $("catalogo").innerHTML = list.length ? list.map(d=>`<article class="card prop" data-go="${d.id}">
       ${fotoHtml(d)}
       <div class="body">
@@ -533,18 +536,16 @@ function renderDetalle(d){
     ${factsHtml(d)}
     ${libreHtml(d)}
     <a class="cta" href="${wa(msgVisita(d))}">Quiero visitarlo</a>
+    <p class="firma"><span>Max Mendelzon ·</span> <span>Century 21 Wilson-Chihan</span></p>
     <section class="card dsec"><h3>El departamento</h3><ul class="plain">${d.detalle.map(x=>`<li>${x}</li>`).join("")}</ul></section>
-    <section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>
+    ${d.amen&&d.amen.length?`<section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>`:""}
     ${d.nota?`<p class="dnote">${d.nota}</p>`:""}
-    ${tieneCasa()?`<a class="cta alt" href="${wa(msgTasa(d))}">Quiero la tasación gratis de mi casa</a>`:""}
+    ${tieneCasa()?`<a class="cta alt" href="${wa(msgTasa(d))}">${HIJOS?"Quiero la tasación gratis de la casa":"Quiero la tasación gratis de mi casa"}</a>`:""}
     <a class="cta" href="${wa(`Hola, qué tal? Me interesa el ${d.nombre}. Me podrían pasar más información?`)}">Me interesa</a>
-    <a class="cta alt" href="${wa(`Hola, qué tal? Vi el ${d.nombre} y me gustaría charlarlo por teléfono. Mi nombre es `)}">Prefiero que me llamen</a>
+    <a class="cta alt" href="${wa(`Hola, qué tal? Vi el ${d.nombre} y me gustaría charlarlo por teléfono. Me podrían llamar?`)}">Prefiero que me llamen</a>
     <p class="phone">O escribinos o llamanos al <strong>0981 290 892</strong></p>
     <p class="phone" style="font-size:.9rem">Precio y disponibilidad sujetos a confirmación.</p>
-    <div class="sig"><details class="quienD"><summary>Max Mendelzon · C21 Wilson-Chihan</summary>
-      <div class="quien"><div class="ava" aria-hidden="true">MM</div>
-      <div><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario · Century 21 Wilson-Chihan</span>
-      <p>Más de 6 años en el rubro inmobiliario, hoy trabajando junto al mejor equipo inmobiliario. Juntos te acompañamos en todo: la tasación y venta de tu casa, y la elección de tu nuevo departamento.</p></div></div></details></div>
+    <div class="sig"><strong>Max Mendelzon</strong><br><span>Asesor inmobiliario ·</span> <span>Century 21 Wilson-Chihan</span></div>
   </div>`;
   $("volver").addEventListener("click", ()=>{ location.hash=""; });
 }
@@ -553,13 +554,15 @@ function route(){
   const m = location.hash.match(/^#depto-([a-z0-9-]+)$/);
   const d = m && DEPTOS.find(x=>x.id===m[1] && publicable(x));
   if (d){
-    st.scrollY = window.scrollY;
+    st.scrollY = window.scrollY; st.vioDetalle = true;
     renderDetalle(d);
     $("vistaInicio").hidden=true; $("vistaDetalle").hidden=false;
     window.scrollTo(0,0);
   } else {
     $("vistaDetalle").hidden=true; $("vistaInicio").hidden=false;
-    window.scrollTo(0, st.scrollY||0);
+    if (st.vioDetalle && $("paso3").hidden){
+      show("paso3", true); if (tieneCasa()) show("paso4"); else show("cierre"); show("contacto");
+    } else window.scrollTo(0, st.scrollY||0);
   }
 }
 
@@ -568,7 +571,7 @@ function links(){
   $("waTasaAmc").href = wa("Hola, qué tal? Tengo una casa y me gustaría saber en cuánto podría venderla, comparando con lo que se vende en mi zona. Cuándo podrían venir a verla?");
   const nombre=$("fNombre").value.trim(), barrio=$("fBarrio").value.trim();
   $("waTasa").href = wa(msgTasa(null)+(nombre?` Mi nombre es ${nombre}.`:""));
-  $("waVisita").href = wa(`Hola, qué tal? Vi los departamentos y me gustaría charlarlo por teléfono.`+(nombre?` Mi nombre es ${nombre}.`:" Mi nombre es "));
+  $("waVisita").href = wa(`Hola, qué tal? Vi los departamentos y me gustaría charlarlo por teléfono. Me podrían llamar?`+(nombre?` Mi nombre es ${nombre}.`:""));
   $("waDeptos").href = wa(`Hola, qué tal? Estuve viendo los departamentos y me gustaría que me ayuden a elegir.`);
 }
 
@@ -579,12 +582,10 @@ function calc(){
   $("dPrecio").textContent=usd(v); $("dCom").textContent=menos(v*S.comisionVenta);
   $("dIrp").textContent=menos(v*S.irp); $("dGas").textContent=menos(v*S.gastosVenta);
   $("dMud").textContent=menos(S.mudanza); $("dEsc").textContent=menos(v*S.escribaniaVenta); $("dNeto").textContent=usd(netoCasa());
-  $("rAlq").textContent = usd(alqMes());
-  $("netoVenta").hidden = st.casa==="alquilar"; $("netoAlq").hidden = !(st.casa==="alquilar" || st.casa==="tasar");
+  $("netoVenta").hidden = st.casa==="alquilar";
   if ($("supuestos")) $("supuestos").textContent =
     `A la venta de la casa le restamos: 5,5% de comisión (5% más IVA), hasta 2,4% de impuesto a la renta por la venta (IRP), 1% de certificados y arreglos, 1,5% de escribanía y transferencia (la mitad que suele pagar el vendedor), y ${usd(S.mudanza)} de mudanza. `+
     `Al precio de cada departamento le sumamos 1,5% de escribanía y transferencia (la mitad que suele pagar el comprador). `+
-    `El alquiler mensual es una estimación aproximada (0,4% del valor de la casa por mes). `+
     `Precios y disponibilidad sujetos a confirmación. El número real de tu casa sale de una visita.`;
   links(); render();
 }
@@ -593,6 +594,7 @@ document.querySelector("[data-group=casa]").addEventListener("click", e=>{
   const b=e.target.closest(".opt"); if(!b) return;
   e.currentTarget.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b));
   st.casa=b.dataset.v; $("subAlq").hidden = st.casa!=="alquilar"; calc();
+  $("s2t").textContent = st.casa==="tasar" ? (HIJOS?"Más o menos, ¿cuánto calculan que vale la casa?":"Más o menos, ¿cuánto calculás que vale tu casa?") : (HIJOS?"¿Cuánto pensás que vale la casa?":"¿Cuánto pensás que vale tu casa?");
   $("subTasa").hidden = st.casa!=="tasar";
   if (tieneCasa()){
     $("cierre").hidden=true;
@@ -637,6 +639,10 @@ if (HIJOS){
   $("s1t").textContent="¿Ya pensaron qué hacer con la casa?";
   $("s2t").textContent="¿Cuánto pensás que vale la casa?";
   document.title="¿Tus papás están pensando en pasar de una casa a un departamento?";
+  $("p4t").textContent="Tasación gratis de la casa";
+  $("p4s").textContent="Vamos a la casa de tus papás sin costo y sin compromiso.";
+  $("waTasa").textContent="Quiero la tasación gratis";
+  $("fBarrio").previousElementSibling.textContent="¿En qué barrio está la casa?";
 }
 window.addEventListener("hashchange", route);
 calc(); route();
@@ -652,7 +658,13 @@ calc(); route();
   function mv(n){k=(k+n+cur.fotos.length)%cur.fotos.length;show();}
   document.addEventListener("click",e=>{
     const vs=e.target.closest(".vslide");
-    if(vs){ if(!vs.querySelector("video")){vs.innerHTML=`<video src="${vs.dataset.vid}" controls autoplay playsinline preload="auto"></video>`;} e.preventDefault(); return; }
+    if(vs){ if(!vs.querySelector("video")){
+        vs.innerHTML=`<video src="${vs.dataset.vid}" controls autoplay playsinline preload="auto"></video>`;
+        const v=vs.querySelector("video"), ph=vs.closest(".ph"), strip=vs.parentElement;
+        v.addEventListener("play",()=>ph.classList.add("playing"));
+        ["pause","ended"].forEach(ev=>v.addEventListener(ev,()=>ph.classList.remove("playing")));
+        strip.addEventListener("scroll",()=>{ if(Math.abs(strip.scrollLeft-vs.offsetLeft)>vs.clientWidth/2 && !v.paused) v.pause(); },{passive:true});
+      } e.preventDefault(); return; }
     if(!e.target.closest("[data-mv],.count,a,button,select,input,summary,video")){
       const card=e.target.closest("article.prop[data-go]");
       if(card){location.hash="depto-"+card.dataset.go;e.preventDefault();return;}
