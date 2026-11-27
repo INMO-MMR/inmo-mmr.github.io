@@ -540,7 +540,7 @@ function renderDetalle(d){
     ${d.amen&&d.amen.length?`<section class="card dsec"><h3>El edificio</h3><ul class="plain">${d.amen.map(x=>`<li>${x}</li>`).join("")}</ul></section>`:""}
     ${d.nota?`<p class="dnote">${d.nota}</p>`:""}
     ${tieneCasa()?`<a class="cta alt" href="${wa(msgTasa(d))}">${HIJOS?"Quiero la tasación gratis de la casa":"Quiero la tasación gratis de mi casa"}</a>`:""}
-    <a class="cta" href="${wa(`Hola, qué tal? Me interesa el ${d.nombre}. Me podrían pasar más información?`)}">Me interesa</a>
+    <a class="cta" href="${wa(`Hola, qué tal? Vi el ${d.nombre}. Sigue disponible?`)}">Consultar si sigue disponible</a>
     <a class="cta alt" href="${wa(`Hola, qué tal? Vi el ${d.nombre} y me gustaría charlarlo por teléfono. Me podrían llamar?`)}">Prefiero que me llamen</a>
     <p class="phone">O escribinos o llamanos al <strong>0981 290 892</strong></p>
     <p class="phone" style="font-size:.9rem">Precio y disponibilidad sujetos a confirmación.</p>
